@@ -1,38 +1,73 @@
 <!doctype html>
 <html>
     <head>
+
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script> 
         <script src="https://cdn.jsdelivr.net/gh/alvinwan/aframe-low-poly@0.0.5/dist/aframe-low-poly.min.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
 
         <title> The Slide VR </title>
     </head>
     
     <body>
         <a-assets>
-            <img id="playerTexture" src="img/TexturesCom_Paint_Chipped_512_roughness.png">
-            <img id="slideTexture" src="img/TexturesCom_Ice_Cracked_1K_albedo.png">
+            <img    id="playerTexture" 
+                    src="img/TexturesCom_Paint_Chipped_512_roughness.png">
+            <img    id="slideTexture" 
+                    src="img/TexturesCom_Ice_Cracked_1K_albedo.png">
         </a-assets>
 
-        <a-scene inspector>
+        <a-scene physics="debug: true">
             <!-- environment -->
-            <a-entity id="environment" environment="preset: tron" position=" 0 0"> </a-entity>
+            <a-entity   id="environment" 
+                        environment="preset: tron" 
+                        position="0 0 0"></a-entity>
 
             <!-- slide -->
-            <a-box id="slide" src="#slideTexture" repeat="5 1" rotation="0 0 0" width="30" height="0.1" depth="5" position="0 1 1">
+            <a-box  static-body
+                    id="slide" w
+                    src="#slideTexture" 
+                    repeat="5 1" 
+                    rotation="0 0 0" 
+                    width="30" 
+                    height="0.1" 
+                    depth="5" 
+                    position="0 1 1" >
+
+            <lp-sphere  color="#59810C" 
+                        seed="10" 
+                        amplitude-variance="0.25" 
+                        max-amplitude="1 1 1" 
+                        radius="0.5"></lp-sphere>
+            </a-box>
 
                 <!-- player -->
-                <a-sphere radius="0.2" id="player" src="#playerTexture" position="14 1 0">
-                    <a-light type="point" intensity="0.35" color="#FFFFF"></a-light>
+            <a-sphere   dynamic-body="shape: sphere; sphereRadius: 0.2"
+                        radius="0.2" 
+                        id="player" 
+                        src="#playerTexture" 
+                        position="14 2 0"
+                        wasd-controls>
+                 
+                 <!-- light under the player -->
+                <a-light    type="point" 
+                            intensity="2" 
+                            color="#FFFFF"></a-light>
 
-                    <!-- camera rig -->
-                    <a-entity id="rig" rotation="-30 90 0">
+                 <!-- camera rig -->
+                <a-entity   id="rig" 
+                            rotation="-30 90 0">
 
-                        <!-- camera -->
-                        <a-entity id="camera" camera look-controls wasd-controls position="0 1.6 3"></a-entity>
+                     <!-- camera -->
+                    <a-entity   id="camera" 
+                                camera 
+                                look-controls  
+                                position="0 1.6 3">
+                        <a-cursor></a-cursor>
                     </a-entity>
-                </a-sphere>
-            </a-box>
+                </a-entity>
+            </a-sphere>
         </a-scene>
     </body>
 
