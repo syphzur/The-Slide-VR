@@ -1,30 +1,40 @@
 <!doctype html>
+
 <html>
+
     <head>
+
+        <!-- external scripts -->
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script> 
         <script src="https://cdn.jsdelivr.net/gh/alvinwan/aframe-low-poly@0.0.5/dist/aframe-low-poly.min.js"></script>
         <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+        
+        <!-- created scripts -->
         <script src="scripts/wasd-player-controls.js"></script>
+        <script src="scripts/rotation-player-controls.js"></script>
 
-        <script> </script>
         <title> The Slide VR </title>
+
     </head>
     
     <body>
-        <a-scene physics="debug: true">
+
+        <a-scene inspector stats physics="debug: true">
 
             <!-- assets -->
             <a-assets>
+
                 <img    id="playerTexture" 
                         src="img/TexturesCom_Paint_Chipped_512_roughness.png">
                 <img    id="slideTexture" 
                         src="img/TexturesCom_Ice_Cracked_1K_albedo.png">
+
             </a-assets>
 
             <!-- environment -->
             <a-entity   id="environment" 
-                        environment="preset: tron" 
+                        environment="preset: tron; fog: 0.95" 
                         position="0 0 0"></a-entity>
 
             <!-- slide -->
@@ -35,25 +45,47 @@
                     rotation="0 0 0" 
                     width="30" 
                     height="0.1" 
-                    depth="5" 
-                    position="0 1 1">
+                    depth="8" 
+                    position="0 1 0">
             </a-box>
-
+            
+            <!-- obstacle1 -->
             <lp-sphere  static-body="shape: box"
-                        color="#59810C" 
+                        id="obstacle"
+                        seed="10" 
+                        amplitude-variance="0.25" 
+                        max-amplitude="1 1 1" 
+                        radius="0.5"www
+                        position="0 1.1 -2"></lp-sphere>
+
+            <!-- obstacle2 -->
+            <lp-sphere  static-body="shape: box"
+            id="obstacle"
+            seed="10" 
+            amplitude-variance="0.25" 
+            max-amplitude="1 1 1" 
+            radius="0.5"
+            position="0 1.1 0"></lp-sphere>
+
+            <!-- obstacle3 -->
+            <lp-sphere  static-body="shape: box"
+                        id="obstacle" 
                         seed="10" 
                         amplitude-variance="0.25" 
                         max-amplitude="1 1 1" 
                         radius="0.5"
-                        position="0 1.1 1"></lp-sphere>
+                        position="0 1.1 2"></lp-sphere>
 
-                <!-- player -->
-            <a-sphere   dynamic-body="shape: sphere; sphereRadius: 0.5"
-                        radius="0.2" 
-                        id="player" 
-                        src="#playerTexture" 
-                        position="14 5 0"
-                        wasd-player-controls>
+            <!-- player -->
+            <a-box  body="type: dynamic; shape: none;"
+                    shape__handle="shape: box; halfExtents: 0.25 0.25 0.25"
+                    depth="0.5" 
+                    height="0.5" 
+                    width="0.5"
+                    id="player" 
+                    src="#playerTexture" 
+                    position="14 5 0"
+                    wasd-player-controls>
                  
                  <!-- light under the player -->
                 <a-light    type="point" 
@@ -68,12 +100,19 @@
                     <a-entity   id="camera" 
                                 camera 
                                 look-controls  
-                                position="0 1.6 3">
+                                position="0 1.6 3"
+                                rotation-player-controls>
+
                         <a-cursor></a-cursor>
+
                     </a-entity>
+
                 </a-entity>
-            </a-sphere>
+
+            </a-box>
+
         </a-scene>
+
     </body>
 
 </html>
