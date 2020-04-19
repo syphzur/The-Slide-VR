@@ -29,7 +29,8 @@
                         src="img/TexturesCom_Paint_Chipped_512_roughness.png">
                 <img    id="slideTexture" 
                         src="img/TexturesCom_Ice_Cracked_1K_albedo.png">
-
+                <img    id="bonusTexture" 
+                        src="img/bonus.png"> 
             </a-assets>
 
             <!-- environment -->
@@ -60,13 +61,7 @@
                         position="0 1.1 -2"></lp-sphere>
 
             <!-- obstacle2 -->
-            <lp-sphere  static-body="shape: box"
-            id="obstacle2"
-            seed="10" 
-            amplitude-variance="0.25" 
-            max-amplitude="1 1 1" 
-            radius="0.5"
-            position="0 1.1 0"></lp-sphere>
+            <a-sphere color="yellow" static-body="shape: sphere; sphereRadius: NaN" id="bonus" material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" position="0 1.56269 0.43122" geometry="radius: 0.3; primitive: icosahedron" radius="1"></a-sphere>
 
             <!-- obstacle3 -->
             <lp-sphere  static-body="shape: box"

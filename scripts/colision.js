@@ -6,10 +6,14 @@ var player = document.getElementById('player');
 function handleCollision(collision){
     var collidedElementId = String(collision.detail.body.el.id);
     const obstaclePrefix = 'obstacle';
+    const bonusPrefix = 'bonus';
         console.log('Player has collided. Element id:' + collidedElementId);
-        if(collidedElementId.includes(obstaclePrefix))
+        if(collidedElementId.includes(bonusPrefix))
         {
             removeElementAndUpdateScore(collidedElementId);
+        }
+        if(collidedElementId.includes(obstaclePrefix)){
+            endGame();
         }
 }
 
@@ -30,4 +34,8 @@ function updateScore(){
     var scoreElement = document.getElementById("score")
     score++;
     scoreElement.setAttribute("text",textValueBeforeScore + score + textValueAfterScore);
+}
+
+function endGame(){
+    window.location.pathname = '/index.html'
 }
