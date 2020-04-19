@@ -49,15 +49,7 @@
                     position="0 1 0">
             </a-box>
 
-            <!-- score counter -->
-            <a-entity id="score" text="value: Your score: 0; side: front; align: center; color: #941414"
-            position="-1.26393 3.51909 0"
-            rotation="0 90 0"
-            scale="15 15 15"
-            align: center>
-            </a-entity>
-
-            
+       
             <!-- obstacle1 -->
             <lp-sphere  static-body="shape: box"
                         id="obstacle1"
@@ -86,14 +78,14 @@
                         position="0 1.1 2"></lp-sphere>
 
             <!-- player -->
-            <a-box  body="type: dynamic; shape: none;; sphereRadius: NaN"
+            <a-box  body="type: dynamic; shape: none; sphereRadius: NaN"
                     shape__handle="shape: box; halfExtents: 0.25 0.25 0.25"
                     depth="0.5" 
                     height="0.5" 
                     width="0.5"
-                    id="player" rotation="0.00017871925609893344 -0.044068263233251394 0.0001232681467048243" 
+                    id="player" rotation="0.00014654086915551852 -0.040698413595158356 0.000128946632411929" 
                     src="#playerTexture" 
-                    position="14.000639988559815 1.3000368097325645 -0.000002094733619650482"
+                    position="14.000900495677971 1.3000357468403985 -0.0000026340425080939954"
                     wasd-player-controls>
                  
                  <!-- light under the player -->
@@ -118,6 +110,14 @@
 
                 </a-entity>
 
+                <!-- score counter -->
+                <a-entity body="type: dynamic; shape: none;; sphereRadius: NaN" id="score" text="value: Your score: 0; side: front; align: center; color: #941414"
+                position="-9.58305 2.48635 0.07047"
+                rotation="0 90 0"
+                scale="10 10 10"
+                align: center>
+                </a-entity>
+                
             </a-box>
 
         </a-scene>
