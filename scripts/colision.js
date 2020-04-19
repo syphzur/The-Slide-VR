@@ -1,14 +1,7 @@
 
-// Removes element
-function removeElement(elementId) {
-        var element = document.getElementById(elementId);
-        element.remove();
-}
-
 //Sets colision event on player
 var player = document.getElementById('player');
     player.addEventListener('collide',handleCollision)
-
 
 function handleCollision(collision){
     var collidedElementId = String(collision.detail.body.el.id);
@@ -16,6 +9,25 @@ function handleCollision(collision){
         console.log('Player has collided. Element id:' + collidedElementId);
         if(collidedElementId.includes(obstaclePrefix))
         {
-            removeElement(collidedElementId);
+            removeElementAndUpdateScore(collidedElementId);
         }
+}
+
+// Removes element
+function removeElementAndUpdateScore(elementId) {
+    var element = document.getElementById(elementId);
+    element.remove();
+    updateScore();
+}
+
+
+//Score handling
+var score = 0;
+const textValueBeforeScore="value: Your score: ";
+const textValueAfterScore="; side: front; align: center; color: #941414";
+function updateScore(){
+    console.log('Score updated.');
+    var scoreElement = document.getElementById("score")
+    score++;
+    scoreElement.setAttribute("text",textValueBeforeScore + score + textValueAfterScore);
 }
