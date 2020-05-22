@@ -1,0 +1,22 @@
+{
+  "name": "the-slide-vr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --watch=. "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syphzur/The-Slide-VR.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syphzur/The-Slide-VR/issues"
+  },
+  "homepage": "https://github.com/syphzur/The-Slide-VR#readme",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
