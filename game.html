@@ -21,7 +21,7 @@
     
     <body>
 
-        <a-scene inspector stats physics="debug: true">
+        <a-scene inspector stats physics="debug:true;">
 
             <!-- assets -->
             <a-assets>
@@ -34,39 +34,28 @@
                         src="img/bonus.png"> 
             </a-assets>
 
-            <a-curve id="track1" type="CubicBezier">
-                <a-curve-point position="-1 5 -3"></a-curve-point>
-                <a-curve-point position="-1 2 -3"></a-curve-point>
-                <a-curve-point position="5 5 -3"></a-curve-point>
-            </a-curve>
-
-              <!-- Draw the Curve -->
-            <a-draw-curve   curveref="#track1" 
-                            material="shader: line; color: blue;">
-            </a-draw-curve>
-
-            <a-entity   clone-along-curve="curve: #track1; spacing: 0.2;" 
-                        geometry="primitive:box; height:0.1; width:0.2; depth:0.1"
-                        static-body="shape: mesh;">
-            </a-entity>
-
-
             <!-- environment -->
             <a-entity   id="environment" 
                         environment="preset: tron; fog: 0.95" 
                         position="0 0 0">
             </a-entity>
 
-            <!-- slide -->
-            <a-box  static-body="shape: hull; sphereRadius: NaN"
-                    id="slide" 
-                    src="#slideTexture" 
-                    repeat="5 1" 
-                    rotation="0 0 0" 
-                    width="30" 
+            <a-curve id="track1" type="CubicBezier">
+                <a-curve-point position="15 1 0"></a-curve-point>
+                <a-curve-point position="0 1 0"></a-curve-point>
+            </a-curve>
+
+              <!-- Draw the Curve -->
+            <a-draw-curve curveref="#track1"></a-draw-curve>
+
+            <a-box  clone-along-curve="curve: #track1; spacing: 0.2;" 
+                    static-body="shape:hull;"
+                    repeat="10 1" 
                     height="0.1" 
-                    depth="8" 
-                    position="0 1 0">
+                    width="8"
+                    depth="0.2"
+                    src="#slideTexture"
+                    id="slidePart">
             </a-box>
 
        
@@ -101,14 +90,14 @@
             </lp-sphere>
 
             <!-- player -->
-            <a-box  body="type: dynamic; shape: none; sphereRadius: NaN"
+            <a-box  dynamic-body="shape: none; sphereRadius: NaN"
                     shape__handle="shape: box; halfExtents: 0.25 0.25 0.25"
                     depth="0.5" 
                     height="0.5" 
                     width="0.5"
-                    id="player" rotation="0.00014654086915551852 -0.040698413595158356 0.000128946632411929" 
+                    id="player" rotation="0 0 0" 
                     src="#playerTexture" 
-                    position="14.000900495677971 1.3000357468403985 -0.0000026340425080939954"
+                    position="14 10 0"
                     arrows-controls>
                  
                  <!-- light under the player -->
