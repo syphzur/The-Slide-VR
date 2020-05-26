@@ -20,7 +20,7 @@
     
     <body>
 
-        <a-scene inspector stats physics="debug:true; gravity: 0;">
+        <a-scene inspector stats physics="debug:true;">
 
             <!-- assets -->
             <a-assets>
@@ -33,7 +33,7 @@
                         src="img/bonus.png"> 
             </a-assets>
 
-            <a-curve id="path">
+            <a-curve id="track1">
                 <a-curve-point position="20 5 0"></a-curve-point>
                 <a-curve-point position="10 5 0"></a-curve-point>
                 <a-curve-point position="0 1 0"></a-curve-point>
@@ -42,7 +42,28 @@
             </a-curve>
 
             <!--path-->
-            <a-box  clone-along-curve="curve: #path; spacing: 0.2;" 
+            <a-box  clone-along-curve="curve: #track1; spacing: 0.2;" 
+                    animation="property: object3D.position.x; from: -80; to: -40; dur: 2000; easing: linear; loop: true"
+                    repeat="10 1" 
+                    height="0.1" 
+                    width="8"
+                    depth="0.2"
+                    id="slidePart"
+                    color="tomato">
+            </a-box>
+
+            <a-box  clone-along-curve="curve: #track1; spacing: 0.2;" 
+                    animation="property: object3D.position.x; from: -40; to: 0; dur: 2000; easing: linear; loop: true"
+                    repeat="10 1" 
+                    height="0.1" 
+                    width="8"
+                    depth="0.2"
+                    id="slidePart"
+                    color="tomato">
+            </a-box>
+
+            <a-box  clone-along-curve="curve: #track1; spacing: 0.2;" 
+                    animation="property: object3D.position.x; from: 0; to: 40; dur: 2000; easing: linear; loop: true"
                     repeat="10 1" 
                     height="0.1" 
                     width="8"
