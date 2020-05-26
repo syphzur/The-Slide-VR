@@ -12,8 +12,9 @@
         <script src="https://unpkg.com/aframe-curve-component/dist/aframe-curve-component.min.js"></script>
 		
         <!-- created scripts -->
-        <script src="scripts/arrows-controls.js"></script>
-        <script src="scripts/rotation-player-controls.js"></script>
+        <script src="scripts/components/arrows-controls.js"></script>
+        <script src="scripts/components/rotation-player-controls.js"></script>
+        <script src="scripts/components/random-curve-point.js"></script>
         <title> The Slide VR </title>
 
     </head>
@@ -36,40 +37,41 @@
             <a-curve id="track1">
                 <a-curve-point position="20 5 0"></a-curve-point>
                 <a-curve-point position="10 5 0"></a-curve-point>
-                <a-curve-point position="0 1 0"></a-curve-point>
+                <a-curve-point id="random-point" position="0 5 0"></a-curve-point>
                 <a-curve-point position="-10 5 0"></a-curve-point>
                 <a-curve-point position="-20 5 0"></a-curve-point>
             </a-curve>
 
             <!--path-->
             <a-box  clone-along-curve="curve: #track1; spacing: 0.2;" 
-                    animation="property: object3D.position.x; from: -80; to: -40; dur: 2000; easing: linear; loop: true"
+                    animation="property: object3D.position.x; from: -80; to: -40; dur: 4000; easing: linear; loop: true"
                     repeat="10 1" 
                     height="0.1" 
                     width="8"
                     depth="0.2"
-                    id="slidePart"
+                    id="slidePart3"
                     color="tomato">
             </a-box>
 
             <a-box  clone-along-curve="curve: #track1; spacing: 0.2;" 
-                    animation="property: object3D.position.x; from: -40; to: 0; dur: 2000; easing: linear; loop: true"
+                    animation="property: object3D.position.x; from: -40; to: 0; dur: 4000; easing: linear; loop: true"
                     repeat="10 1" 
                     height="0.1" 
                     width="8"
                     depth="0.2"
-                    id="slidePart"
+                    id="slidePart2"
                     color="tomato">
             </a-box>
 
             <a-box  clone-along-curve="curve: #track1; spacing: 0.2;" 
-                    animation="property: object3D.position.x; from: 0; to: 40; dur: 2000; easing: linear; loop: true"
+                    animation="property: object3D.position.x; from: 0; to: 40; dur: 4000; easing: linear; loop: true"
                     repeat="10 1" 
                     height="0.1" 
                     width="8"
                     depth="0.2"
-                    id="slidePart"
-                    color="tomato">
+                    id="slidePart1"
+                    color="tomato"
+                    random-curve-point>
             </a-box>
 
             <!-- obstacle1 -->
