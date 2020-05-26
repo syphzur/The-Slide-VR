@@ -9,7 +9,8 @@
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script> 
         <script src="https://cdn.jsdelivr.net/gh/alvinwan/aframe-low-poly@0.0.5/dist/aframe-low-poly.min.js"></script>
         <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
-        
+        <script src="https://unpkg.com/aframe-curve-component/dist/aframe-curve-component.min.js"></script>
+
 		
         <!-- created scripts -->
         <script src="scripts/arrows-controls.js"></script>
@@ -36,7 +37,8 @@
             <!-- environment -->
             <a-entity   id="environment" 
                         environment="preset: tron; fog: 0.95" 
-                        position="0 0 0"></a-entity>
+                        position="0 0 0">
+            </a-entity>
 
             <!-- slide -->
             <a-box  static-body="shape: hull; sphereRadius: NaN"
@@ -57,11 +59,19 @@
                         seed="10" 
                         amplitude-variance="0.25" 
                         max-amplitude="1 1 1" 
-                        radius="0.5"www
-                        position="0 1.1 -2"></lp-sphere>
+                        radius="0.5"
+                        position="0 1.1 -2">
+            </lp-sphere>
 
             <!-- obstacle2 -->
-            <a-sphere color="yellow" static-body="shape: sphere; sphereRadius: NaN" id="bonus" material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" position="0 1.56269 0.43122" geometry="radius: 0.3; primitive: icosahedron" radius="1"></a-sphere>
+            <a-sphere   color="yellow" 
+                        static-body="shape: sphere; sphereRadius: NaN" 
+                        id="bonus" 
+                        material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
+                        position="0 1.56269 0.43122" 
+                        geometry="radius: 0.3; primitive: icosahedron" 
+                        radius="1">
+            </a-sphere>
 
             <!-- obstacle3 -->
             <lp-sphere  static-body="shape: box"
@@ -70,7 +80,8 @@
                         amplitude-variance="0.25" 
                         max-amplitude="1 1 1" 
                         radius="0.5"
-                        position="0 1.1 2"></lp-sphere>
+                        position="0 1.1 2">
+            </lp-sphere>
 
             <!-- player -->
             <a-box  body="type: dynamic; shape: none; sphereRadius: NaN"
@@ -86,7 +97,8 @@
                  <!-- light under the player -->
                 <a-light    type="point" 
                             intensity="2" 
-                            color="#FFFFFF"></a-light>
+                            color="#FFFFFF">
+                </a-light>
 
                  <!-- camera rig -->
                 <a-entity   id="rig" 
@@ -106,11 +118,13 @@
                 </a-entity>
 
                 <!-- score counter -->
-                <a-entity body="type: dynamic; shape: none;; sphereRadius: NaN" id="score" text="value: Your score: 0; side: front; align: center; color: #941414"
-                position="-9.58305 2.48635 0.07047"
-                rotation="0 90 0"
-                scale="10 10 10"
-                align: center>
+                <a-entity   body="type: dynamic; shape: none;; sphereRadius: NaN" 
+                            id="score" 
+                            text="value: Your score: 0; side: front; align: center; color: #941414"
+                            position="-9.58305 2.48635 0.07047"
+                            rotation="0 90 0"
+                            scale="10 10 10"
+                            align: center>
                 </a-entity>
                 
             </a-box>
