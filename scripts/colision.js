@@ -1,10 +1,10 @@
 
 //Sets colision event on player
-var player = document.getElementById('player');
+const player = document.getElementById('player');
     player.addEventListener('collide',handleCollision)
 
 function handleCollision(collision){
-    var collidedElementId = String(collision.detail.body.el.id);
+    const collidedElementId = String(collision.detail.body.el.id);
     const obstaclePrefix = 'obstacle';
     const bonusPrefix = 'bonus';
         console.log('Player has collided. Element id:' + collidedElementId);
@@ -19,9 +19,11 @@ function handleCollision(collision){
 
 // Removes element
 function removeElementAndUpdateScore(elementId) {
-    var element = document.getElementById(elementId);
-    element.remove();
-    updateScore();
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.remove();
+        updateScore();
+    }
 }
 
 
