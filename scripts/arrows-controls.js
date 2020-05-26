@@ -1,4 +1,4 @@
-AFRAME.registerComponent("wasd-player-controls", {
+AFRAME.registerComponent("arrows-controls", {
     init: function() {
       window.addEventListener("keydown", (e) => {
         const posVec = this.el.body.position;
@@ -18,11 +18,6 @@ AFRAME.registerComponent("wasd-player-controls", {
           case 40:
               this.el.body.position.set(posVec.x + 0.05, posVec.y, posVec.z);
               console.log(this.el.body.id);
-              break;
-          case 32: 
-              this.el.body.fixedRotation = true;
-              this.el.body.updateMassProperties();
-              this.el.body.applyImpulse(new CANNON.Vec3(0,50,0), this.el.body.position);
               break;
         }
       });
