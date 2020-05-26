@@ -34,6 +34,23 @@
                         src="img/bonus.png"> 
             </a-assets>
 
+            <a-curve id="track1" type="CubicBezier">
+                <a-curve-point position="-1 5 -3"></a-curve-point>
+                <a-curve-point position="-1 2 -3"></a-curve-point>
+                <a-curve-point position="5 5 -3"></a-curve-point>
+            </a-curve>
+
+              <!-- Draw the Curve -->
+            <a-draw-curve   curveref="#track1" 
+                            material="shader: line; color: blue;">
+            </a-draw-curve>
+
+            <a-entity   clone-along-curve="curve: #track1; spacing: 0.2;" 
+                        geometry="primitive:box; height:0.1; width:0.2; depth:0.1"
+                        static-body="shape: mesh;">
+            </a-entity>
+
+
             <!-- environment -->
             <a-entity   id="environment" 
                         environment="preset: tron; fog: 0.95" 
