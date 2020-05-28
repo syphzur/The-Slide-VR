@@ -16,7 +16,6 @@ AFRAME.registerComponent("adjust-player-position", {
     if (pointsArray.length != 10) {
       throw new Error("There should be 10 points.");
     }
-    pointsArray;
     const curve = new THREE.CatmullRomCurve3(pointsArray);
 
     const curvePointsArray = curve.getSpacedPoints(1000);
