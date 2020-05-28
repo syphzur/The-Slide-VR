@@ -1,4 +1,11 @@
 AFRAME.registerComponent("adjust-player-position", {
+  init: function () {
+    const player = this.el;
+    player.addEventListener('body-loaded', function () {
+      player.body.angularDamping = 0;
+    })
+  },
+
   tick: function (time, timeDelta) {
     const track1 = document.querySelector("#track1");
     const track2 = document.querySelector("#track2");
@@ -19,7 +26,9 @@ AFRAME.registerComponent("adjust-player-position", {
         return adjustedPos;
       })
       .concat(
-        Array.from(track2.querySelectorAll("a-curve-point")).map(function (point) {
+        Array.from(track2.querySelectorAll("a-curve-point")).map(function (
+          point
+        ) {
           const pos = point.object3D.position;
           const offset = Math.abs(-40 - slidePart2.object3D.position.x);
           const adjustedPos = new THREE.Vector3(pos.x + offset, pos.y, pos.z);
@@ -55,7 +64,8 @@ AFRAME.registerComponent("adjust-player-position", {
         new CANNON.Vec3().copy(playerPos)
       );
     } else if (currY > 0.6 && currY < 0.7) {
-      const velY = this.el.body.velocity.y - 0.01 > 0 ? this.el.body.velocity.y - 0.01 : 0;
+      const velY =
+        this.el.body.velocity.y - 0.01 > 0 ? this.el.body.velocity.y - 0.01 : 0;
       this.el.body.velocity.set(0, velY, 0);
     }
   },
