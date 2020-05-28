@@ -39,6 +39,12 @@
                         src="img/bonus.png"> 
             </a-assets>
 
+            <!-- environment -->
+            <a-entity   id="environment" 
+                        environment="preset: tron; fog: 0.96;" 
+                        position="0 -10 0">
+             </a-entity>
+
             <!--curve with length 40-->
             <a-curve id="track1">
                 <a-curve-point position="20 5 0"></a-curve-point>
@@ -105,23 +111,18 @@
                         radius="0.5"
                         position="0 1.1 2">
             </lp-sphere>
-                        <!--bobbing animation-->
-                       <!-- animation="property: object3D.position.y; dir: alternate; from: 5.55; to: 5.7 ; dur: 2000; easing: easeInOutQuad; loop: true"  -->
+
+            <!--bobbing player animation-->
+            <!-- animation="property: object3D.position.y; dir: alternate; from: 5.55; to: 5.7 ; dur: 2000; easing: easeInOutQuad; loop: true"  -->
 
             <!-- player -->
             <a-entity   id="player"
-                        dynamic-body
+                        dynamic-body="shape: none"
                         adjust-model="1"
                         gltf-model="#playerModel"
                         position="14 5.55 0"
                         arrows-controls
                         adjust-player-position>
-
-                <!-- environment -->
-                <a-entity   id="environment" 
-                            environment="preset: tron; fog: 0.96;" 
-                            position="0 -10 0">
-                </a-entity>
 
                  <!-- light under the player -->
                 <a-light    type="point" 
@@ -147,7 +148,7 @@
                 </a-entity>
 
                 <!-- score counter -->
-                <a-entity   body="type: dynamic; shape: none;; sphereRadius: NaN" 
+                <a-entity   body="type: dynamic; shape: none; sphereRadius: NaN" 
                             id="score" 
                             text="value: Your score: 0; side: front; align: center; color: #941414"
                             position="-9.6 2.5 0.1"
