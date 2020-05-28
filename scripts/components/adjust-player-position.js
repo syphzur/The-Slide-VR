@@ -5,7 +5,7 @@ AFRAME.registerComponent("adjust-player-position", {
     const slidePart1 = document.querySelector("#slidePart1");
     const slidePart2 = document.querySelector("#slidePart1");
     const playerPos = this.el.object3D.position;
-    const nextPosOffset = 2;
+    const nextPosOffset = 3;
     const nextPlayerPos = new THREE.Vector3(
       playerPos.x - nextPosOffset,
       playerPos.y,
@@ -31,7 +31,7 @@ AFRAME.registerComponent("adjust-player-position", {
     }
     const curve = new THREE.CatmullRomCurve3(pointsArray);
 
-    const curvePointsArray = curve.getSpacedPoints(10000);
+    const curvePointsArray = curve.getSpacedPoints(10000); // ca. 0.002 between points
     let nearestPoint;
     let distance = Number.MAX_SAFE_INTEGER;
     curvePointsArray.forEach((element) => {
@@ -41,18 +41,16 @@ AFRAME.registerComponent("adjust-player-position", {
         nearestPoint = element;
       }
     });
-    //console.log(nearestPoint, this.el.object3D.position)
     const nextY = calculateYDistance(nearestPoint, nextPlayerPos);
     const currY = calculateYDistance(nearestPoint, playerPos);
-    const step = 0.03;
+    const step = 0.1;
     //adjusting height
-    if (currY > 1.5) {
-      playerPos.setY(playerPos.y - 3 * step);
-    } else if (currY < 0.3) {
+    if (currY < 0.3) {
       playerPos.setY(playerPos.y + 3 * step);
-    } else if (nextY > 1) {
+      console.log("fs")
+    } else if (nextY > 1.2) {
       playerPos.setY(playerPos.y - step);
-    } else if (nextY < 0.5) {
+    } else if (nextY < 0.6) {
       playerPos.setY(playerPos.y + step);
     }
   },
