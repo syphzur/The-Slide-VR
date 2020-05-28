@@ -41,17 +41,22 @@ AFRAME.registerComponent("adjust-player-position", {
         nearestPoint = element;
       }
     });
-    const nextY = calculateYDistance(nearestPoint, nextPlayerPos);
     const currY = calculateYDistance(nearestPoint, playerPos);
-    const step = 0.1;
     //adjusting height
+    //gravity is turned off so we need to apply impulses in both directions
     if (currY < 0.3) {
-      playerPos.setY(playerPos.y + 3 * step);
-      console.log("fs")
-    } else if (nextY > 1.2) {
-      playerPos.setY(playerPos.y - step);
-    } else if (nextY < 0.6) {
-      playerPos.setY(playerPos.y + step);
+      this.el.body.applyImpulse(
+        new CANNON.Vec3(0, 0.5, 0),
+        new CANNON.Vec3().copy(playerPos)
+      );
+    } else if (currY > 1.2) {
+      this.el.body.applyImpulse(
+        new CANNON.Vec3(0, -0.3, 0),
+        new CANNON.Vec3().copy(playerPos)
+      );
+    } else if (currY > 0.6 && currY < 0.7) {
+      const velY = this.el.body.velocity.y - 0.01 > 0 ? this.el.body.velocity.y - 0.01 : 0;
+      this.el.body.velocity.set(0, velY, 0);
     }
   },
 });
