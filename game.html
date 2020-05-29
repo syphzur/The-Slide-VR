@@ -80,7 +80,7 @@
                             height="2"
                             radius-bottom="0.5"
                             radius-top="0.5"
-                            position="20 0 0"
+                            position="-50 0 0"
                             static-body>
                 </lp-cone>
 
@@ -92,7 +92,7 @@
                             height="2"
                             radius-bottom="0.5"
                             radius-top="0.5"
-                            position="20 0 0"
+                            position="-50 0 0"
                             static-body>
                 </lp-cone>
 
@@ -117,7 +117,7 @@
                             height="2"
                             radius-bottom="0.5"
                             radius-top="0.5"
-                            position="20 0 0"
+                            position="-50 0 0"
                             static-body>
                 </lp-cone>
 
@@ -129,33 +129,22 @@
                             height="2"
                             radius-bottom="0.5"
                             radius-top="0.5"
-                            position="20 0 0"
+                            position="-50 0 0"
                             static-body>
                 </lp-cone>
+
+                <!-- bonus -->
+                <lp-sphere  color="yellow" 
+                            id="track1Bonus" 
+                            material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
+                            position="-50 0 0"
+                            scale="0.5 0.5 0.5"
+                            static-body
+                            radius="1">
+                </lp-sphere>
  
             </a-box>
 
-     
-
-            <!-- bonus 
-            <a-sphere   color="yellow" 
-                        id="bonus" 
-                        material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
-                        position="0 1.56269 0.43122" 
-                        geometry="radius: 0.3; primitive: icosahedron" 
-                        radius="1">
-            </a-sphere>
-            -->
-
-            <!-- obstacle3
-            <lp-sphere  id="obstacle3" 
-                        seed="10" 
-                        amplitude-variance="0.25" 
-                        max-amplitude="1 1 1" 
-                        radius="0.5"
-                        position="0 1.1 2">
-            </lp-sphere>
-            -->    
 
             <!--bobbing player animation-->
             <!-- animation="property: object3D.position.y; dir: alternate; from: 5.55; to: 5.7 ; dur: 2000; easing: easeInOutQuad; loop: true"  -->
