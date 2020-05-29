@@ -71,6 +71,31 @@
                     id="slidePart2"
                     color="tomato"
                     slide-part2-animation>
+
+                <!-- obstacle1, position relative to slidePart2-->
+                <lp-cone    id="track2Obstacle1"
+                            seed="10" 
+                            amplitude-variance="0.25" 
+                            max-amplitude="1 1 1" 
+                            height="2"
+                            radius-bottom="0.5"
+                            radius-top="0.5"
+                            position="20 0 0"
+                            static-body>
+                </lp-cone>
+
+                <!-- obstacle2, position relative to slidePart2-->
+                <lp-cone    id="track2Obstacle2"
+                            seed="10" 
+                            amplitude-variance="0.25" 
+                            max-amplitude="1 1 1" 
+                            height="2"
+                            radius-bottom="0.5"
+                            radius-top="0.5"
+                            position="20 0 0"
+                            static-body>
+                </lp-cone>
+
             </a-box> 
 
    
@@ -86,6 +111,18 @@
 
                 <!-- obstacle1, position relative to slidePart1, starting position behind player-->
                 <lp-cone    id="track1Obstacle1"
+                            seed="10" 
+                            amplitude-variance="0.25" 
+                            max-amplitude="1 1 1" 
+                            height="2"
+                            radius-bottom="0.5"
+                            radius-top="0.5"
+                            position="20 0 0"
+                            static-body>
+                </lp-cone>
+
+                <!-- obstacle2, position relative to slidePart1, starting position behind player-->
+                <lp-cone    id="track1Obstacle2"
                             seed="10" 
                             amplitude-variance="0.25" 
                             max-amplitude="1 1 1" 
