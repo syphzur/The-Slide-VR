@@ -16,13 +16,15 @@
         <script src="scripts/components/rotation-player-controls.js"></script>
         <script src="scripts/components/slide-part-animation.js"></script>
         <script src="scripts/components/adjust-model.js"></script>
+        <script src="scripts/components/adjust-player-position.js"></script>
+
         <title> The Slide VR </title>
 
     </head>
     
     <body>
 
-        <a-scene inspector stats physics="debug:true;">
+        <a-scene inspector stats physics="debug:true; gravity: 0;">
 
             <!-- assets -->
             <a-assets>
@@ -37,6 +39,12 @@
                         src="img/bonus.png"> 
             </a-assets>
 
+            <!-- environment -->
+            <a-entity   id="environment" 
+                        environment="preset: tron; fog: 0.96;" 
+                        position="0 -10 0">
+             </a-entity>
+
             <!--curve with length 40-->
             <a-curve id="track1">
                 <a-curve-point position="20 5 0"></a-curve-point>
@@ -45,7 +53,7 @@
                 <a-curve-point position="-10 5 0"></a-curve-point>
                 <a-curve-point position="-20 5 0"></a-curve-point>
             </a-curve>
-
+        
             <a-curve id="track2">
                 <a-curve-point position="20 5 0"></a-curve-point>
                 <a-curve-point position="10 5 0"></a-curve-point>
@@ -54,69 +62,101 @@
                 <a-curve-point position="-20 5 0"></a-curve-point>
             </a-curve>
 
-            <a-box  clone-along-curve="curve: #track2; spacing: 0.2;" 
+            <a-box  clone-along-curve="curve: #track2; spacing: 2.5;" 
                     position="-40 0 0"
                     repeat="10 1" 
                     height="0.1" 
                     width="8"
-                    depth="0.2"
+                    depth="2"
                     id="slidePart2"
                     color="tomato"
                     slide-part2-animation>
+
+                <!-- obstacle1, position relative to slidePart2-->
+                <lp-cone    id="track2Obstacle1"
+                            seed="10" 
+                            amplitude-variance="0.25" 
+                            max-amplitude="1 1 1" 
+                            height="2"
+                            radius-bottom="0.5"
+                            radius-top="0.5"
+                            position="-50 0 0"
+                            static-body>
+                </lp-cone>
+
+                <!-- obstacle2, position relative to slidePart2-->
+                <lp-cone    id="track2Obstacle2"
+                            seed="10" 
+                            amplitude-variance="0.25" 
+                            max-amplitude="1 1 1" 
+                            height="2"
+                            radius-bottom="0.5"
+                            radius-top="0.5"
+                            position="-50 0 0"
+                            static-body>
+                </lp-cone>
+
             </a-box> 
 
    
-            <a-box  clone-along-curve="curve: #track1; spacing: 0.2;" 
+            <a-box  clone-along-curve="curve: #track1; spacing: 2.5" 
                     position="0 0 0"
                     repeat="10 1" 
                     height="0.1" 
                     width="8"
-                    depth="0.2"
+                    depth="2"
                     id="slidePart1"
                     color="tomato"
                     slide-part1-animation>
+
+                <!-- obstacle1, position relative to slidePart1, starting position behind player-->
+                <lp-cone    id="track1Obstacle1"
+                            seed="10" 
+                            amplitude-variance="0.25" 
+                            max-amplitude="1 1 1" 
+                            height="2"
+                            radius-bottom="0.5"
+                            radius-top="0.5"
+                            position="-50 0 0"
+                            static-body>
+                </lp-cone>
+
+                <!-- obstacle2, position relative to slidePart1, starting position behind player-->
+                <lp-cone    id="track1Obstacle2"
+                            seed="10" 
+                            amplitude-variance="0.25" 
+                            max-amplitude="1 1 1" 
+                            height="2"
+                            radius-bottom="0.5"
+                            radius-top="0.5"
+                            position="-50 0 0"
+                            static-body>
+                </lp-cone>
+
+                <!-- bonus -->
+                <lp-sphere  color="yellow" 
+                            id="track1Bonus" 
+                            material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
+                            position="-50 0 0"
+                            scale="0.5 0.5 0.5"
+                            static-body
+                            radius="1">
+                </lp-sphere>
+ 
             </a-box>
 
-            <!-- obstacle1 -->
-            <lp-sphere  id="obstacle1"
-                        seed="10" 
-                        amplitude-variance="0.25" 
-                        max-amplitude="1 1 1" 
-                        radius="0.5"
-                        position="0 1.1 -2">
-            </lp-sphere>
 
-            <!-- obstacle2 -->
-            <a-sphere   color="yellow" 
-                        id="bonus" 
-                        material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
-                        position="0 1.56269 0.43122" 
-                        geometry="radius: 0.3; primitive: icosahedron" 
-                        radius="1">
-            </a-sphere>
-
-            <!-- obstacle3 -->
-            <lp-sphere  id="obstacle3" 
-                        seed="10" 
-                        amplitude-variance="0.25" 
-                        max-amplitude="1 1 1" 
-                        radius="0.5"
-                        position="0 1.1 2">
-            </lp-sphere>
+            <!--bobbing player animation-->
+            <!-- animation="property: object3D.position.y; dir: alternate; from: 5.55; to: 5.7 ; dur: 2000; easing: easeInOutQuad; loop: true"  -->
 
             <!-- player -->
             <a-entity   id="player"
+                        dynamic-body="shape: none"
                         adjust-model="1"
                         gltf-model="#playerModel"
                         position="14 5.55 0"
-                        animation="property: object3D.position.y; dir: alternate; from: 5.55; to: 5.7 ; dur: 2000; easing: easeInOutQuad; loop: true"  
-                        arrows-controls>
-
-                <!-- environment -->
-                <a-entity   id="environment" 
-                            environment="preset: tron; fog: 0.96;" 
-                            position="0 -10 0">
-                </a-entity>
+                        arrows-controls
+                        adjust-player-position>
 
                  <!-- light under the player -->
                 <a-light    type="point" 
@@ -142,7 +182,7 @@
                 </a-entity>
 
                 <!-- score counter -->
-                <a-entity   body="type: dynamic; shape: none;; sphereRadius: NaN" 
+                <a-entity   body="type: dynamic; shape: none; sphereRadius: NaN" 
                             id="score" 
                             text="value: Your score: 0; side: front; align: center; color: #941414"
                             position="-9.6 2.5 0.1"
