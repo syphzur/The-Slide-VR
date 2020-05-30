@@ -64,3 +64,6 @@ body {
   border-bottom: .25rem solid transparent;
 }
 
+#controls-link {
+  color: #c62727;
+}
