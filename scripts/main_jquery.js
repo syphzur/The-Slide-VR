@@ -1,3 +1,5 @@
-$(document).ready(function(){
-  alert("Jquery works.");
+$(document).ready(function () {
+  $('#controls-link').click(function () {
+		$('#main').load('controls.html');
+  });
 });
