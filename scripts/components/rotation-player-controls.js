@@ -36,12 +36,23 @@ AFRAME.registerComponent("rotation-player-controls", {
       if (distance > tmp) {
         distance = tmp;
         nearestPoint = element;
-      } 
+      }
     });
-    const leftBarrierPos = {x: nearestPoint.x, y: nearestPoint.y, z: nearestPoint.z - 4};
-    const rightBarrierPos = {x: nearestPoint.x, y: nearestPoint.y, z: nearestPoint.z + 4};
+    const leftBarrierPos = {
+      x: nearestPoint.x,
+      y: nearestPoint.y,
+      z: nearestPoint.z - 4,
+    };
+    const rightBarrierPos = {
+      x: nearestPoint.x,
+      y: nearestPoint.y,
+      z: nearestPoint.z + 4,
+    };
 
-    if (calculateZDistance(leftBarrierPos, pos) > 0.2 && calculateZDistance(rightBarrierPos, pos) > 0.2) {
+    if (
+      calculateZDistance(leftBarrierPos, pos) > 0.2 &&
+      calculateZDistance(rightBarrierPos, pos) > 0.2
+    ) {
       player.body?.position.set(pos.x, pos.y, pos.z + 0.1 * rot.y);
     } else {
       const step = -rot.y * 1;
