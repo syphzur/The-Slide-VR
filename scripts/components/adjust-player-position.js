@@ -12,11 +12,11 @@ AFRAME.registerComponent("adjust-player-position", {
     const slidePart1 = document.querySelector("#slidePart1");
     const slidePart2 = document.querySelector("#slidePart1");
     const playerPos = this.el.object3D.position;
-    const nextPosOffset = 3;
+    const nextPosOffset = 1;
     const nextPlayerPos = new THREE.Vector3(
       playerPos.x - nextPosOffset,
       playerPos.y,
-      playerPos.y
+      playerPos.z
     );
     const pointsArray = Array.from(track1.querySelectorAll("a-curve-point"))
       .map(function (point) {
@@ -69,7 +69,7 @@ AFRAME.registerComponent("adjust-player-position", {
     } else if (currY > 1.2) {
       //impulse to go down
       this.el.body.applyImpulse(
-        new CANNON.Vec3(0, -0.35, 0),
+        new CANNON.Vec3(0, -0.3, 0),
         new CANNON.Vec3().copy(playerPos)
       );
     } else if (currY > 0.5 && currY < 0.6) {
