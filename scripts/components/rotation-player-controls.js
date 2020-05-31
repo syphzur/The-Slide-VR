@@ -1,9 +1,13 @@
 AFRAME.registerComponent("rotation-player-controls", {
     tick: function (time, timeDelta) {
-      const rotation = this.el.object3D.rotation;
+      //this = camera object
+      const rot = this.el.object3D.rotation;
       const player = document.querySelector("#player");
-      player.object3D.rotation.set(rotation.x, rotation.y, rotation.z);
-      const pos = player.object3D.position;
-      player.object3D.position.set(pos.x , pos.y, rotation.y * 7);
+      const mesh = player.getObject3D('mesh');
+      mesh?.rotation.set(rot.x, rot.y + Math.PI / 2, rot.z); // change y value to adjust model rotation
+      const pos = player.body?.position;
+      player.body?.position.set(pos.x, pos.y, pos.z + 0.1 * rot.y);
+
+      
     }
   })
