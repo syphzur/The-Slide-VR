@@ -54,7 +54,6 @@ AFRAME.registerComponent("adjust-player-position", {
     //adjusting height
     //gravity is turned off so we need to apply impulses in both directions
     if (currY < 0.4) {
-      console.log("low", currY)
       //impulse to go up
       this.el.body.applyImpulse(
         new CANNON.Vec3(0, 0.5, 0),
@@ -66,7 +65,6 @@ AFRAME.registerComponent("adjust-player-position", {
           new CANNON.Vec3(0, 0.5, 0),
           new CANNON.Vec3().copy(playerPos)
         );
-        console.log("really low", currY)
       }
     } else if (currY > 1.2) {
       //impulse to go down
