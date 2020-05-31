@@ -27,10 +27,10 @@ function animateSlidePart(position, trackSelector, randomPointSelector, generate
     const randomPoint = document.querySelector(randomPointSelector);
     let y = getRandomFromRange(3, 7);
     let z = getRandomFromRange(-2, 2);
-    //object3d.position.set doesnt work
+    //object3d.position.set doesn't work
     randomPoint.setAttribute(
       "position",
-      "0 " + y.toString() + " " + z.toString()
+      "0 " + y + " " + z
     );
     //generate new obstacle position
     const obstacle1 = document.querySelector(trackSelector + "Obstacle1");

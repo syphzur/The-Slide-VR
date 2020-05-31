@@ -1,4 +1,4 @@
-//Sets colision event on player
+//Sets collision event on player
 const player = document.getElementById('player');
     player.addEventListener('collide',handleCollision)
 
