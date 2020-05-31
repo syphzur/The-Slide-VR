@@ -12,7 +12,7 @@ AFRAME.registerComponent("adjust-player-position", {
     const slidePart1 = document.querySelector("#slidePart1");
     const slidePart2 = document.querySelector("#slidePart1");
     const playerPos = this.el.object3D.position;
-    const nextPosOffset = 1;
+    const nextPosOffset = 1.5;
     const nextPlayerPos = new THREE.Vector3(
       playerPos.x - nextPosOffset,
       playerPos.y,
