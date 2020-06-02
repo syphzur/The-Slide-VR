@@ -1,5 +1,5 @@
 //Sets collision event on player
-const player = document.getElementById('player');
+const player = document.getElementById('player-collision');
     player.addEventListener('collide',handleCollision)
 
 function handleCollision(collision){
