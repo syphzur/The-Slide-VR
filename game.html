@@ -75,6 +75,7 @@
 
                 <!-- obstacle1, position relative to slidePart2-->
                 <lp-cone    id="track2Obstacle1"
+                            class="obstacle"
                             seed="10" 
                             amplitude-variance="0.25" 
                             max-amplitude="1 1 1" 
@@ -87,6 +88,7 @@
 
                 <!-- obstacle2, position relative to slidePart2-->
                 <lp-cone    id="track2Obstacle2"
+                            class="obstacle"
                             seed="10" 
                             amplitude-variance="0.25" 
                             max-amplitude="1 1 1" 
@@ -112,6 +114,7 @@
 
                 <!-- obstacle1, position relative to slidePart1, starting position behind player-->
                 <lp-cone    id="track1Obstacle1"
+                            class="obstacle"
                             seed="10" 
                             amplitude-variance="0.25" 
                             max-amplitude="1 1 1" 
@@ -124,6 +127,7 @@
 
                 <!-- obstacle2, position relative to slidePart1, starting position behind player-->
                 <lp-cone    id="track1Obstacle2"
+                            class="obstacle"
                             seed="10" 
                             amplitude-variance="0.25" 
                             max-amplitude="1 1 1" 
@@ -136,7 +140,8 @@
 
                 <!-- bonus -->
                 <lp-sphere  color="yellow" 
-                            id="track1Bonus" 
+                            class="bonus"
+                            id="track1Bonus"
                             material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
                             position="-50 0 0"
                             scale="0.5 0.5 0.5"
