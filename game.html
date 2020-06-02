@@ -187,6 +187,13 @@
             <!-- animation="property: object3D.position.y; dir: alternate; from: 5.55; to: 5.7 ; dur: 2000; easing: easeInOutQuad; loop: true"  -->
 
             <!-- player -->
+            <a-box id="player-collision"
+                dynamic-body="shape: sphere; sphereRadius: 0.65"
+                material="opacity: 0"
+                position="14 5.55 0"
+                arrows-controls
+                adjust-player-position
+            ></a-box>
             <a-entity   id="player"
                         dynamic-body="shape: none"
                         adjust-model="1"

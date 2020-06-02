@@ -3,6 +3,7 @@ AFRAME.registerComponent("rotation-player-controls", {
     //this = camera object
     const rot = this.el.object3D.rotation;
     const player = document.querySelector("#player");
+    const playerCollider = document.querySelector("#player-collision");
     const mesh = player.getObject3D("mesh");
     mesh?.rotation.set(rot.x, rot.y + Math.PI / 2, rot.z); // change y value to adjust model rotation
     const pos = player.body?.position;
@@ -54,9 +55,13 @@ AFRAME.registerComponent("rotation-player-controls", {
       calculateZDistance(rightBarrierPos, pos) > 0.2
     ) {
       player.body?.position.set(pos.x, pos.y, pos.z + 0.1 * rot.y);
+      playerCollider.body?.position.set(pos.x, pos.y, pos.z + 0.1 * rot.y);
+      playerCollider.object3D.rotation.set(0,0,0);
     } else {
       const step = -rot.y * 1;
       player.body?.position.set(pos.x, pos.y, pos.z + step);
+      playerCollider.body?.position.set(pos.x, pos.y, pos.z + step);
+      playerCollider.object3D.rotation.set(0,0,0);
     }
   },
 });
