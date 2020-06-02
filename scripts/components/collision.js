@@ -1,8 +1,9 @@
 //Sets collision event on player
-const player = document.getElementById('player-collision');
+const player = document.querySelector('#player-collision');
     player.addEventListener('collide',handleCollision)
 
 function handleCollision(collision){
+    
     const collidedElementId = String(collision.detail.body.el.id);
     const obstaclePrefix = 'obstacle';
     const bonusPrefix = 'bonus';
