@@ -16,12 +16,13 @@ a:hover {
 	background-color: #c6bbbb;
 	text-shadow: none;
 }
+
 .btn-secondary:hover,
 .btn-secondary:focus {
   color: #938b8b;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: #c6bbbb;
-  border: .05rem solid #ff;
+  border: .05rem solid #ff0000;
 }
 
 html,
@@ -32,7 +33,6 @@ body {
 }
 
 body {
-	
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
