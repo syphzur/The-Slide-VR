@@ -12,11 +12,11 @@ AFRAME.registerComponent("adjust-player-position", {
     const slidePart1 = document.querySelector("#slidePart1");
     const slidePart2 = document.querySelector("#slidePart1");
     const playerPos = this.el.object3D.position;
-    const nextPosOffset = 3;
+    const nextPosOffset = 1.5;
     const nextPlayerPos = new THREE.Vector3(
       playerPos.x - nextPosOffset,
       playerPos.y,
-      playerPos.y
+      playerPos.z
     );
     const pointsArray = Array.from(track1.querySelectorAll("a-curve-point"))
       .map(function (point) {
@@ -53,17 +53,27 @@ AFRAME.registerComponent("adjust-player-position", {
     const currY = calculateYDistance(nearestPoint, playerPos);
     //adjusting height
     //gravity is turned off so we need to apply impulses in both directions
-    if (currY < 0.3) {
+    if (currY < 0.4) {
+      //impulse to go up
       this.el.body.applyImpulse(
         new CANNON.Vec3(0, 0.5, 0),
         new CANNON.Vec3().copy(playerPos)
       );
+      if (currY < 0.3) {
+        //apply another impulse if player is really low
+        this.el.body.applyImpulse(
+          new CANNON.Vec3(0, 0.5, 0),
+          new CANNON.Vec3().copy(playerPos)
+        );
+      }
     } else if (currY > 1.2) {
+      //impulse to go down
       this.el.body.applyImpulse(
         new CANNON.Vec3(0, -0.3, 0),
         new CANNON.Vec3().copy(playerPos)
       );
-    } else if (currY > 0.6 && currY < 0.7) {
+    } else if (currY > 0.5 && currY < 0.6) {
+      //reducing velocity
       const velY =
         this.el.body.velocity.y - 0.01 > 0 ? this.el.body.velocity.y - 0.01 : 0;
       this.el.body.velocity.set(0, velY, 0);
