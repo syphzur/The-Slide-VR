@@ -3,27 +3,24 @@ const player = document.querySelector('#player-collision');
     player.addEventListener('collide',handleCollision)
 
 function handleCollision(collision){
+    const elem = collision.detail.body;
+    console.log("colided with: ", elem);
     
-    const collidedElementId = String(collision.detail.body.el.id);
-    const obstaclePrefix = 'obstacle';
-    const bonusPrefix = 'bonus';
-        console.log('Player has collided. Element id:' + collidedElementId);
-        if(collidedElementId.includes(bonusPrefix))
-        {
-            removeElementAndUpdateScore(collidedElementId);
-        }
-        if(collidedElementId.includes(obstaclePrefix)){
-            endGame();
-        }
+    if(elem.el.className === 'bonus')
+    {
+        removeElementAndUpdateScore(elem.el);
+    }
+    if(elem.el.className === "obstacle"){
+        endGame();
+    }
 }
 
 // Removes element
-function removeElementAndUpdateScore(elementId) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.remove();
-        updateScore();
-    }
+function removeElementAndUpdateScore(element) {
+    // TODO hide and move the element
+    // TODO otherwise during deletion game crashes
+    element.remove();
+    updateScore();
 }
 
 
@@ -33,7 +30,7 @@ const textValueBeforeScore="value: Your score: ";
 const textValueAfterScore="; side: front; align: center; color: #941414";
 function updateScore(){
     console.log('Score updated.');
-    var scoreElement = document.getElementById("score")
+    var scoreElement = document.querySelector("#score");
     score++;
     scoreElement.setAttribute("text",textValueBeforeScore + score + textValueAfterScore);
 }
