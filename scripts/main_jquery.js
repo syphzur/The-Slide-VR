@@ -1,7 +1,6 @@
 $(document).ready(function () {
-  $('#controls-link').click(function () {
-    $('#main').load('controls.html');
-  });
+
+    $('#main').load('main.html');
 
   function deselect(e) {
     $('#main').load('main.html');
