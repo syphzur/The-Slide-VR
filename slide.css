@@ -71,3 +71,7 @@ body {
 #back-link {
   color: #c62727;
 }
+
+a.selected {
+  background-color:rgb(132, 187, 241);
+}
