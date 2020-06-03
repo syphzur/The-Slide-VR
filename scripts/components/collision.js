@@ -17,9 +17,9 @@ function handleCollision(collision){
 
 // Removes element
 function removeElementAndUpdateScore(element) {
-    // TODO hide and move the element
-    // TODO otherwise during deletion game crashes
-    element.remove();
+    // hide or move the element
+    // otherwise during deletion game crashes
+    element.setAttribute("visible", "false");
     updateScore();
 }
 
