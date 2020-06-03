@@ -74,30 +74,50 @@
                     slide-part2-animation>
 
                 <!-- obstacle1, position relative to slidePart2-->
-                <lp-cone    id="track2Obstacle1"
-                            class="obstacle"
-                            seed="10" 
-                            amplitude-variance="0.25" 
-                            max-amplitude="1 1 1" 
-                            height="2"
-                            radius-bottom="0.5"
-                            radius-top="0.5"
-                            position="-50 0 0"
-                            static-body>
-                </lp-cone>
+                <a-cylinder
+                    id="track2Obstacle1"
+                    position="-50 0 0"
+                    class="obstacle"
+                    radius-bottom="0.6"
+                    radius-top="0.6"
+                    static-body="shape: cylinder"
+                    opacity="0"
+                >
+                    <lp-cone    
+                        seed="10" 
+                        amplitude-variance="0.25" 
+                        max-amplitude="1 1 1" 
+                        height="2"
+                        radius-bottom="0.5"
+                        radius-top="0.5"
+                        position="-0.75 0 -0.5"
+                    >
+                    </lp-cone>  
+                </a-cylinder>
+
 
                 <!-- obstacle2, position relative to slidePart2-->
-                <lp-cone    id="track2Obstacle2"
-                            class="obstacle"
-                            seed="10" 
-                            amplitude-variance="0.25" 
-                            max-amplitude="1 1 1" 
-                            height="2"
-                            radius-bottom="0.5"
-                            radius-top="0.5"
-                            position="-50 0 0"
-                            static-body>
-                </lp-cone>
+                <a-cylinder
+                    id="track2Obstacle2"
+                    position="-50 0 0"
+                    class="obstacle"
+                    radius-bottom="0.6"
+                    radius-top="0.6"
+                    static-body="shape: cylinder"
+                    opacity="0"
+                >
+                    <lp-cone    
+                        seed="10" 
+                        amplitude-variance="0.25" 
+                        max-amplitude="1 1 1" 
+                        height="2"
+                        radius-bottom="0.5"
+                        radius-top="0.5"
+                        position="-0.75 0 -0.5"
+                    >
+                    </lp-cone>
+                </a-cylinder>
+
 
             </a-box> 
 
@@ -113,42 +133,62 @@
                     slide-part1-animation>
 
                 <!-- obstacle1, position relative to slidePart1, starting position behind player-->
-                <lp-cone    id="track1Obstacle1"
-                            class="obstacle"
-                            seed="10" 
-                            amplitude-variance="0.25" 
-                            max-amplitude="1 1 1" 
-                            height="2"
-                            radius-bottom="0.5"
-                            radius-top="0.5"
-                            position="-50 0 0"
-                            static-body>
-                </lp-cone>
+                <a-cylinder
+                    id="track1Obstacle1"
+                    position="-50 0 0"
+                    class="obstacle"
+                    radius-bottom="0.6"
+                    radius-top="0.6"
+                    static-body="shape: cylinder"
+                    opacity="0"
+                >
+                    <lp-cone    
+                        seed="10" 
+                        amplitude-variance="0.25" 
+                        max-amplitude="1 1 1" 
+                        height="2"
+                        radius-bottom="0.5"
+                        radius-top="0.5"
+                        position="-0.75 0 -0.5"
+                    >
+                    </lp-cone>
+                </a-cylinder>
 
                 <!-- obstacle2, position relative to slidePart1, starting position behind player-->
-                <lp-cone    id="track1Obstacle2"
-                            class="obstacle"
-                            seed="10" 
-                            amplitude-variance="0.25" 
-                            max-amplitude="1 1 1" 
-                            height="2"
-                            radius-bottom="0.5"
-                            radius-top="0.5"
-                            position="-50 0 0"
-                            static-body>
-                </lp-cone>
+                <a-cylinder
+                    id="track1Obstacle2"
+                    position="-50 0 0"
+                    class="obstacle"
+                    radius-bottom="0.6"
+                    radius-top="0.6"
+                    static-body="shape: cylinder"
+                    opacity="0"
+                >
+                    <lp-cone    
+                        seed="10" 
+                        amplitude-variance="0.25" 
+                        max-amplitude="1 1 1" 
+                        height="2"
+                        radius-bottom="0.5"
+                        radius-top="0.5"
+                        position="-0.75 0 -0.5"
+                    >
+                    </lp-cone>
+                </a-cylinder>
 
                 <!-- bonus -->
-                <lp-sphere  color="yellow" 
-                            class="bonus"
-                            id="track1Bonus"
-                            material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
-                            position="-50 0 0"
-                            scale="0.5 0.5 0.5"
-                            static-body
-                            radius="1">
+                <lp-sphere  
+                    color="yellow" 
+                    class="bonus"
+                    id="track1Bonus"
+                    material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
+                    position="-50 0 0"
+                    scale="0.5 0.5 0.5"
+                    static-body
+                    radius="1"
+                >
                 </lp-sphere>
- 
+
             </a-box>
 
             <a-box clone-along-curve="curve: #track1; spacing: 2" 
