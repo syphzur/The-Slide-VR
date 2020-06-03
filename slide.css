@@ -67,6 +67,10 @@ body {
   color: #c62727;
 }
 
+#main {
+  height: 10em;
+}
+
 a.selected {
-  background-color:rgb(132, 187, 241);
+  background-color:rgb(132, 187, 241) !important;
 }
