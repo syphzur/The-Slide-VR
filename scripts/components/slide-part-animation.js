@@ -23,7 +23,7 @@ function animateSlidePart(position, trackSelector, randomPointSelector, generate
     newPosX = -42.25;
     //generate new curve point
     const randomPoint = document.querySelector(randomPointSelector);
-    let y = getRandomFromRange(3, 7);
+    let y = getRandomFromRange(3, 6);
     let z = getRandomFromRange(-2, 2);
     //object3d.position.set doesn't work
     randomPoint.setAttribute(
