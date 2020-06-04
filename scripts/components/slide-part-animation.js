@@ -48,8 +48,8 @@ function animateSlidePart(position, trackSelector, randomPointSelector, generate
     const randomPointPos2 = curvePointsArray.randomItem();
     const d = Math.abs(randomPointPos2.x - randomPointPos1.x);
     //if obstacles are too close on x axis
-    if (d < 1.5) {
-      randomPointPos2.setX(randomPointPos2.x + 1.5);
+    if (d < 3) {
+      randomPointPos2.setX(randomPointPos2.x + 3);
     }
     obstacle2.object3D.position.set(randomPointPos2.x - offset, randomPointPos2.y + 1, randomPointPos2.z + getRandomFromRange(-3, 3));
     if (generateBonus) {
