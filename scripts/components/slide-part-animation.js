@@ -20,7 +20,7 @@ function animateSlidePart(position, trackSelector, randomPointSelector, generate
   let newPosX = position.x + 0.1;
   if (position.x > 40) {
     //move track to the beginning
-    newPosX = -40;
+    newPosX = -42.25;
     //generate new curve point
     const randomPoint = document.querySelector(randomPointSelector);
     let y = getRandomFromRange(3, 7);
