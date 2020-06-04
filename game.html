@@ -12,11 +12,13 @@
         <script src="https://unpkg.com/aframe-curve-component/dist/aframe-curve-component.min.js"></script>
 		
         <!-- created scripts -->
+        <script src="scripts/components/clear-forces.js"></script>
         <script src="scripts/components/arrows-controls.js"></script>
         <script src="scripts/components/rotation-player-controls.js"></script>
         <script src="scripts/components/slide-part-animation.js"></script>
         <script src="scripts/components/adjust-model.js"></script>
         <script src="scripts/components/adjust-player-position.js"></script>
+        <script defer src="scripts/components/collision.js"></script>
 
         <title> The Slide VR </title>
 
@@ -72,28 +74,50 @@
                     slide-part2-animation>
 
                 <!-- obstacle1, position relative to slidePart2-->
-                <lp-cone    id="track2Obstacle1"
-                            seed="10" 
-                            amplitude-variance="0.25" 
-                            max-amplitude="1 1 1" 
-                            height="2"
-                            radius-bottom="0.5"
-                            radius-top="0.5"
-                            position="-50 0 0"
-                            static-body>
-                </lp-cone>
+                <a-cylinder
+                    id="track2Obstacle1"
+                    position="-50 0 0"
+                    class="obstacle"
+                    radius-bottom="0.6"
+                    radius-top="0.6"
+                    static-body="shape: cylinder"
+                    opacity="0"
+                >
+                    <lp-cone    
+                        seed="10" 
+                        amplitude-variance="0.25" 
+                        max-amplitude="1 1 1" 
+                        height="2"
+                        radius-bottom="0.5"
+                        radius-top="0.5"
+                        position="-0.75 0 -0.5"
+                    >
+                    </lp-cone>  
+                </a-cylinder>
+
 
                 <!-- obstacle2, position relative to slidePart2-->
-                <lp-cone    id="track2Obstacle2"
-                            seed="10" 
-                            amplitude-variance="0.25" 
-                            max-amplitude="1 1 1" 
-                            height="2"
-                            radius-bottom="0.5"
-                            radius-top="0.5"
-                            position="-50 0 0"
-                            static-body>
-                </lp-cone>
+                <a-cylinder
+                    id="track2Obstacle2"
+                    position="-50 0 0"
+                    class="obstacle"
+                    radius-bottom="0.6"
+                    radius-top="0.6"
+                    static-body="shape: cylinder"
+                    opacity="0"
+                >
+                    <lp-cone    
+                        seed="10" 
+                        amplitude-variance="0.25" 
+                        max-amplitude="1 1 1" 
+                        height="2"
+                        radius-bottom="0.5"
+                        radius-top="0.5"
+                        position="-0.75 0 -0.5"
+                    >
+                    </lp-cone>
+                </a-cylinder>
+
 
             </a-box> 
 
@@ -109,45 +133,76 @@
                     slide-part1-animation>
 
                 <!-- obstacle1, position relative to slidePart1, starting position behind player-->
-                <lp-cone    id="track1Obstacle1"
-                            seed="10" 
-                            amplitude-variance="0.25" 
-                            max-amplitude="1 1 1" 
-                            height="2"
-                            radius-bottom="0.5"
-                            radius-top="0.5"
-                            position="-50 0 0"
-                            static-body>
-                </lp-cone>
+                <a-cylinder
+                    id="track1Obstacle1"
+                    position="-50 0 0"
+                    class="obstacle"
+                    radius-bottom="0.6"
+                    radius-top="0.6"
+                    static-body="shape: cylinder"
+                    opacity="0"
+                >
+                    <lp-cone    
+                        seed="10" 
+                        amplitude-variance="0.25" 
+                        max-amplitude="1 1 1" 
+                        height="2"
+                        radius-bottom="0.5"
+                        radius-top="0.5"
+                        position="-0.75 0 -0.5"
+                    >
+                    </lp-cone>
+                </a-cylinder>
 
                 <!-- obstacle2, position relative to slidePart1, starting position behind player-->
-                <lp-cone    id="track1Obstacle2"
-                            seed="10" 
-                            amplitude-variance="0.25" 
-                            max-amplitude="1 1 1" 
-                            height="2"
-                            radius-bottom="0.5"
-                            radius-top="0.5"
-                            position="-50 0 0"
-                            static-body>
-                </lp-cone>
+                <a-cylinder
+                    id="track1Obstacle2"
+                    position="-50 0 0"
+                    class="obstacle"
+                    radius-bottom="0.6"
+                    radius-top="0.6"
+                    static-body="shape: cylinder"
+                    opacity="0"
+                >
+                    <lp-cone    
+                        seed="10" 
+                        amplitude-variance="0.25" 
+                        max-amplitude="1 1 1" 
+                        height="2"
+                        radius-bottom="0.5"
+                        radius-top="0.5"
+                        position="-0.75 0 -0.5"
+                    >
+                    </lp-cone>
+                </a-cylinder>
 
                 <!-- bonus -->
-                <lp-sphere  color="yellow" 
-                            id="track1Bonus" 
-                            material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
-                            position="-50 0 0"
-                            scale="0.5 0.5 0.5"
-                            static-body
-                            radius="1">
+                <lp-sphere  
+                    color="yellow" 
+                    class="bonus"
+                    id="track1Bonus"
+                    material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
+                    position="-50 0 0"
+                    scale="0.5 0.5 0.5"
+                    static-body
+                    radius="1"
+                >
                 </lp-sphere>
- 
+
             </a-box>
 
             <!--bobbing player animation-->
             <!-- animation="property: object3D.position.y; dir: alternate; from: 5.55; to: 5.7 ; dur: 2000; easing: easeInOutQuad; loop: true"  -->
 
             <!-- player -->
+            <a-sphere 
+                id="player-collision"
+                radius="0.65"
+                opacity="0"
+                body
+                position="14 5.55 0"
+                collision-detector
+            ></a-sphere>
             <a-entity   id="player"
                         dynamic-body="shape: none"
                         adjust-model="1"
@@ -180,20 +235,18 @@
 
                 </a-entity>
 
+
+                
+            </a-entity>
                 <!-- score counter -->
                 <a-entity   body="type: dynamic; shape: none; sphereRadius: NaN" 
                             id="score" 
                             text="value: Your score: 0; side: front; align: center; color: #941414"
-                            position="-9.6 2.5 0.1"
+                            position="4.4 8.05 0.1"
                             rotation="0 90 0"
                             scale="10 10 10"
                             align: center>
                 </a-entity>
-                
-            </a-entity>
-
         </a-scene>
-
     </body>
-    <script src="scripts/colision.js"></script>
 </html>
