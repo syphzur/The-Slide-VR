@@ -5,7 +5,7 @@ AFRAME.registerComponent("rotation-player-controls", {
     const player = document.querySelector("#player");
     const playerCollider = document.querySelector("#player-collision");
     const mesh = player.getObject3D("mesh");
-    mesh?.rotation.set(rot.x, rot.y + Math.PI / 2, rot.z); // change y value to adjust model rotation
+    mesh?.rotation.set(0, rot.y + Math.PI / 2, rot.z); // change y value to adjust model rotation
     const pos = player.body?.position;
 
     const slidePart1 = document.querySelector("#slidePart1");
