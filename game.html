@@ -12,6 +12,7 @@
         <script src="https://unpkg.com/aframe-curve-component/dist/aframe-curve-component.min.js"></script>
 		
         <!-- created scripts -->
+        <script src="scripts/components/clear-forces.js"></script>
         <script src="scripts/components/arrows-controls.js"></script>
         <script src="scripts/components/rotation-player-controls.js"></script>
         <script src="scripts/components/slide-part-animation.js"></script>
@@ -231,13 +232,14 @@
             <!-- animation="property: object3D.position.y; dir: alternate; from: 5.55; to: 5.7 ; dur: 2000; easing: easeInOutQuad; loop: true"  -->
 
             <!-- player -->
-            <a-box id="player-collision"
-                dynamic-body="shape: sphere; sphereRadius: 0.65"
-                material="opacity: 0"
+            <a-sphere 
+                id="player-collision"
+                radius="0.65"
+                opacity="0"
+                body
                 position="14 5.55 0"
-                arrows-controls
-                adjust-player-position
-            ></a-box>
+                collision-detector
+            ></a-sphere>
             <a-entity   id="player"
                         dynamic-body="shape: none"
                         adjust-model="1"

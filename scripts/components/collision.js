@@ -1,6 +1,10 @@
 //Sets collision event on player
-const player = document.querySelector('#player-collision');
-    player.addEventListener('collide',handleCollision)
+AFRAME.registerComponent("collision-detector", {
+    init: function () {
+        const player = this.el;
+        player.addEventListener('collide', handleCollision);
+    }
+})
 
 function handleCollision(collision){
     const elem = collision.detail.body;
@@ -13,6 +17,13 @@ function handleCollision(collision){
     if(elem.el.className === "obstacle"){
         endGame();
     }
+    const playerCollider = document.querySelector("#player-collision").body;
+    const player = document.querySelector("#player").body;
+    const pos = player.position;
+    clearForces(playerCollider);
+    //! THIS SETS COLLIDER POSITION
+    //! DESPITE DEBUG WIREFRAME SAYING OTHERWISE
+    playerCollider.position.set(pos.x, pos.y, pos.z);
 }
 
 // Removes element

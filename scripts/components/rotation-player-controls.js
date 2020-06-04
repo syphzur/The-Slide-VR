@@ -55,14 +55,11 @@ AFRAME.registerComponent("rotation-player-controls", {
       calculateZDistance(rightBarrierPos, pos) > 0.2
     ) {
       player.body?.position.set(pos.x, pos.y, pos.z + 0.1 * rot.y);
-      playerCollider.body?.position.set(pos.x, pos.y, pos.z + 0.1 * rot.y);
-      playerCollider.object3D.rotation.set(0,0,0);
     } else {
       const step = -rot.y * 1;
       player.body?.position.set(pos.x, pos.y, pos.z + step);
-      playerCollider.body?.position.set(pos.x, pos.y, pos.z + step);
-      playerCollider.object3D.rotation.set(0,0,0);
     }
+    playerCollider.body?.position?.set(pos.x, pos.y, pos.z);
   },
 });
 
