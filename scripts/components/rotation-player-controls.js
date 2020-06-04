@@ -1,4 +1,3 @@
-
 AFRAME.registerComponent("rotation-player-controls", {
   tick: function (time, timeDelta) {
     //this = camera object
@@ -6,7 +5,7 @@ AFRAME.registerComponent("rotation-player-controls", {
     const player = document.querySelector("#player");
     const playerCollider = document.querySelector("#player-collision");
     const mesh = player.getObject3D("mesh");
-    mesh?.rotation.set(rot.x, rot.y + Math.PI / 2, rot.z); // change y value to adjust model rotation
+    mesh?.rotation.set(0, rot.y + Math.PI / 2, rot.z); // change y value to adjust model rotation
     const pos = player.body?.position;
 
     const slidePart1 = document.querySelector("#slidePart1");
@@ -50,14 +49,18 @@ AFRAME.registerComponent("rotation-player-controls", {
       y: nearestPoint.y,
       z: nearestPoint.z + 4,
     };
+    const dFromLeftBarrier = calculateZDistance(leftBarrierPos, pos);
+    const dFromRightBarrier = calculateZDistance(rightBarrierPos, pos);
 
-    if (
-      calculateZDistance(leftBarrierPos, pos) > 0.2 &&
-      calculateZDistance(rightBarrierPos, pos) > 0.2
-    ) {
+    if (dFromLeftBarrier > 0.2 && dFromRightBarrier > 0.2) {
       player.body?.position.set(pos.x, pos.y, pos.z + 0.1 * rot.y);
     } else {
-      const step = -rot.y * 1;
+      let step = 0;
+      if (dFromLeftBarrier > 0.2 ) {
+        step = -Math.abs(rot.y) * 1.5;
+      } else if (dFromRightBarrier > 0.2 ) {
+        step = Math.abs(rot.y) * 1.5;
+      }
       player.body?.position.set(pos.x, pos.y, pos.z + step);
     }
     playerCollider.body?.position?.set(pos.x, pos.y, pos.z);

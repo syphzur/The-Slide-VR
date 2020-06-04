@@ -20,10 +20,10 @@ function animateSlidePart(position, trackSelector, randomPointSelector, generate
   let newPosX = position.x + 0.1;
   if (position.x > 40) {
     //move track to the beginning
-    newPosX = -40;
+    newPosX = -42.25;
     //generate new curve point
     const randomPoint = document.querySelector(randomPointSelector);
-    let y = getRandomFromRange(3, 7);
+    let y = getRandomFromRange(3, 6);
     let z = getRandomFromRange(-2, 2);
     //object3d.position.set doesn't work
     randomPoint.setAttribute(
@@ -48,8 +48,8 @@ function animateSlidePart(position, trackSelector, randomPointSelector, generate
     const randomPointPos2 = curvePointsArray.randomItem();
     const d = Math.abs(randomPointPos2.x - randomPointPos1.x);
     //if obstacles are too close on x axis
-    if (d < 1.5) {
-      randomPointPos2.setX(randomPointPos2.x + 1.5);
+    if (d < 3) {
+      randomPointPos2.setX(randomPointPos2.x + 3);
     }
     obstacle2.object3D.position.set(randomPointPos2.x - offset, randomPointPos2.y + 1, randomPointPos2.z + getRandomFromRange(-3, 3));
     if (generateBonus) {
