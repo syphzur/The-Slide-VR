@@ -18,6 +18,8 @@ function getRandomFromRange(min, max) {
 
 function animateSlidePart(position, trackSelector, randomPointSelector, generateBonus) {
   let newPosX = position.x + 0.1;
+  const barrierLeft = document.querySelector(trackSelector + "BarrierLeft");
+  const barrierRight = document.querySelector(trackSelector + "BarrierRight");
   if (position.x > 40) {
     //move track to the beginning
     newPosX = -40;
@@ -25,10 +27,10 @@ function animateSlidePart(position, trackSelector, randomPointSelector, generate
     const randomPoint = document.querySelector(randomPointSelector);
     let y = getRandomFromRange(3, 7);
     let z = getRandomFromRange(-2, 2);
-    //object3d.position.set doesnt work
+    //object3d.position.set doesn't work
     randomPoint.setAttribute(
       "position",
-      "0 " + y.toString() + " " + z.toString()
+      "0 " + y + " " + z
     );
     //generate new obstacle position
     const obstacle1 = document.querySelector(trackSelector + "Obstacle1");
@@ -63,6 +65,8 @@ function animateSlidePart(position, trackSelector, randomPointSelector, generate
     }
   }
   position.setX(newPosX);
+  barrierLeft.object3D.position.setX(newPosX);
+  barrierRight.object3D.position.setX(newPosX);
 
 }
 
