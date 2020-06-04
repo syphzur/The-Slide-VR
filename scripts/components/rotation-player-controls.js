@@ -1,3 +1,4 @@
+
 AFRAME.registerComponent("rotation-player-controls", {
   tick: function (time, timeDelta) {
     //this = camera object

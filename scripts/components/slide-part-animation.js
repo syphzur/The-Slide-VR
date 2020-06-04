@@ -61,8 +61,8 @@ function animateSlidePart(position, trackSelector, randomPointSelector, generate
       const d2 = Math.abs(randomPointPos3.x - randomPointPos2.x);
       if (d1 > 1 && d2 > 1) {
         bonus.object3D.position.set(randomPointPos3.x - offset, randomPointPos3.y + 1, randomPointPos3.z + getRandomFromRange(-3, 3));
-        bonus.setAttribute("visible", "true");
       }
+      bonus.setAttribute("visible", "true");
     }
   }
   position.setX(newPosX);
