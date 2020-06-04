@@ -21,9 +21,10 @@
         <script defer src="scripts/components/collision.js"></script>
 
         <title> The Slide VR </title>
-
+        <audio autoplay loop>
+            <source src="audio/ingame.mp3" type="audio/mpeg">
+        </audio>
     </head>
-    
     <body>
 
         <a-scene inspector stats physics="debug:true; gravity: 0;">
@@ -38,6 +39,12 @@
                         src="img/TexturesCom_Ice_Cracked_1K_albedo.png">
                 <img    id="bonusTexture" 
                         src="img/bonus.png"> 
+
+                <!-- music d-__-b -->
+                <audio id="collision" src="audio/collision.mp3" preload="auto"></audio>
+                <audio id="bonus" src="audio/bonus.mp3" preload="auto"></audio>
+                <audio id="gameover" src="audio/gameover.mp3" preload="auto"></audio>
+                
             </a-assets>
 
             <!-- environment -->
