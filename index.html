@@ -12,12 +12,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="slide.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <audio autoplay loop>
-      <source src="audio/mainmenu.mp3" type="audio/mpeg">
-    </audio>   
+  
   </head>
 
   <body class="text-center">
+    <audio id="audio" autoplay loop>
+      <source src="audio/mainmenu.mp3" type="audio/mpeg">
+    </audio> 
+    <script>
+      const audio = document.getElementById("audio");
+      audio.volume = 0.5;
+  </script>
 
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
