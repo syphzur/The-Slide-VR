@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Neucha&family=Press+Start+2P&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Neucha&family=Press+Start+2P&display=swap");
 
 /* Links */
-a{
-	color: #938b8b;
+a {
+  color: #938b8b;
 }
 a:focus,
 a:hover {
@@ -11,10 +10,10 @@ a:hover {
 }
 
 /* Custom default button */
-.btn-secondary{
-	color: #c62727;
-	background-color: #c6bbbb;
-	text-shadow: none;
+.btn-secondary {
+  color: #c62727;
+  background-color: #c6bbbb;
+  text-shadow: none;
 }
 
 .btn-secondary:hover,
@@ -22,14 +21,14 @@ a:hover {
   color: #938b8b;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: #c6bbbb;
-  border: .05rem solid #ff0000;
+  border: 0.05rem solid #ff0000;
 }
 
 html,
 body {
   height: 100%;
   background-color: #3c3a3a;
-  font-family: 'Neucha', cursive;
+  font-family: "Neucha", cursive;
 }
 
 body {
@@ -40,13 +39,13 @@ body {
   -webkit-box-pack: center;
   justify-content: center;
   color: #938b8b;
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
 }
 
 .masthead {
   margin-bottom: 2rem;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   font-weight: 800;
   color: #c62727;
 }
@@ -56,11 +55,11 @@ body {
 }
 
 .nav-masthead .nav-link {
-  padding: .25rem 0;
+  padding: 0.25rem 0;
   font-weight: 700;
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, 0.5);
   background-color: transparent;
-  border-bottom: .25rem solid transparent;
+  border-bottom: 0.25rem solid transparent;
 }
 
 #controls-link {
@@ -72,5 +71,10 @@ body {
 }
 
 a.selected {
-  background-color:rgb(132, 187, 241) !important;
+  background-color: rgb(132, 187, 241) !important;
+}
+
+.gameOver {
+  color: #d7391d;
+  margin-bottom: 100px;
 }

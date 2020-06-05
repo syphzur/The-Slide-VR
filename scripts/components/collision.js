@@ -36,7 +36,8 @@ function removeElementAndUpdateScore(element) {
 }
 
 function endGame() {
-    window.location.pathname = '/index.html'
+    localStorage.setItem('score', score);
+    window.location.replace('/index.html');
 }
 
 //Score handling
@@ -52,7 +53,6 @@ const scoreUpdateValue = {
 };
 
 function startScoreIncrement() {
-    console.log("inside");
     setInterval(() => updateScore(scoreUpdateValue.SCORE_DISTANCE_UPDATE), SCORE_DISTANCE_UPDATE_INTERVAL);
 }
 
@@ -61,7 +61,6 @@ function updateScoreAfterBonusCollision() {
 }
 
 function updateScore(scoreUpdateValue) {
-    console.log('Score updated:' + scoreUpdateValue);
     var scoreElement = document.querySelector("#score");
     score += scoreUpdateValue;
     scoreElement.setAttribute("text", TEXT_VALUE_BEFORE_SCORE + score + TEXT_VALUE_AFTER_SCORE);
