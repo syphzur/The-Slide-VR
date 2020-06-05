@@ -19,13 +19,19 @@
         <script src="scripts/components/adjust-model.js"></script>
         <script src="scripts/components/adjust-player-position.js"></script>
         <script defer src="scripts/components/collision.js"></script>
+        
 
         <title> The Slide VR </title>
-        <audio autoplay loop>
-            <source src="audio/ingame.mp3" type="audio/mpeg">
-        </audio>
+        
     </head>
     <body>
+        <audio id="audio" autoplay loop>
+            <source  src="audio/ingame.mp3" type="audio/mpeg">
+        </audio>
+        <script>
+            const audio = document.getElementById("audio");
+            audio.volume = 0.5;
+        </script>
 
         <a-scene inspector stats physics="gravity: 0;">
 
@@ -34,6 +40,11 @@
 
                 <a-asset-item   id="playerModel" 
                                 src="models/low_poly_space_ship_09/scene.gltf">
+                </a-asset-item>
+                <a-asset-item 
+                    id="obstacleModel"
+                    src="./models/low_poly_rock/low_poly_rock.gltf"    
+                >
                 </a-asset-item>
                 <img    id="slideTexture" 
                         src="img/TexturesCom_Ice_Cracked_1K_albedo.png">
@@ -81,51 +92,27 @@
                     slide-part2-animation>
 
                 <!-- obstacle1, position relative to slidePart2-->
-                <a-cylinder
+                <a-entity    
                     id="track2Obstacle1"
+                    gltf-model="#obstacleModel"
                     position="-50 0 0"
                     class="obstacle"
-                    radius-bottom="0.6"
-                    radius-top="0.6"
-                    static-body="shape: cylinder"
-                    opacity="0"
+                    gltf-model="#obstacleModel"
+                    static-body="shape:hull"
                 >
-                    <lp-cone    
-                        seed="10" 
-                        amplitude-variance="0.25" 
-                        max-amplitude="1 1 1" 
-                        height="2"
-                        radius-bottom="0.5"
-                        radius-top="0.5"
-                        position="-0.75 0 -0.5"
-                    >
-                    </lp-cone>  
-                </a-cylinder>
+                </a-entity>
 
 
                 <!-- obstacle2, position relative to slidePart2-->
-                <a-cylinder
+                <a-entity    
                     id="track2Obstacle2"
                     position="-50 0 0"
                     class="obstacle"
-                    radius-bottom="0.6"
-                    radius-top="0.6"
-                    static-body="shape: cylinder"
-                    opacity="0"
+                    gltf-model="#obstacleModel"
+                    static-body="shape:hull"
+                    rotation="0 90 0" 
                 >
-                    <lp-cone    
-                        seed="10" 
-                        amplitude-variance="0.25" 
-                        max-amplitude="1 1 1" 
-                        height="2"
-                        radius-bottom="0.5"
-                        radius-top="0.5"
-                        position="-0.75 0 -0.5"
-                    >
-                    </lp-cone>
-                </a-cylinder>
-
-
+                </a-entity>
             </a-box> 
 
    
@@ -140,48 +127,25 @@
                     slide-part1-animation>
 
                 <!-- obstacle1, position relative to slidePart1, starting position behind player-->
-                <a-cylinder
+                <a-entity    
                     id="track1Obstacle1"
                     position="-50 0 0"
                     class="obstacle"
-                    radius-bottom="0.6"
-                    radius-top="0.6"
-                    static-body="shape: cylinder"
-                    opacity="0"
+                    gltf-model="#obstacleModel"
+                    static-body="shape:hull"
+                    rotation="0 180 0" 
                 >
-                    <lp-cone    
-                        seed="10" 
-                        amplitude-variance="0.25" 
-                        max-amplitude="1 1 1" 
-                        height="2"
-                        radius-bottom="0.5"
-                        radius-top="0.5"
-                        position="-0.75 0 -0.5"
-                    >
-                    </lp-cone>
-                </a-cylinder>
-
+                </a-entity>
                 <!-- obstacle2, position relative to slidePart1, starting position behind player-->
-                <a-cylinder
+                <a-entity    
                     id="track1Obstacle2"
                     position="-50 0 0"
                     class="obstacle"
-                    radius-bottom="0.6"
-                    radius-top="0.6"
-                    static-body="shape: cylinder"
-                    opacity="0"
+                    gltf-model="#obstacleModel"
+                    static-body="shape:hull"
+                    rotation="0 270 0" 
                 >
-                    <lp-cone    
-                        seed="10" 
-                        amplitude-variance="0.25" 
-                        max-amplitude="1 1 1" 
-                        height="2"
-                        radius-bottom="0.5"
-                        radius-top="0.5"
-                        position="-0.75 0 -0.5"
-                    >
-                    </lp-cone>
-                </a-cylinder>
+                </a-entity>
 
                 <!-- bonus -->
                 <lp-sphere  
