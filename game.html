@@ -19,13 +19,19 @@
         <script src="scripts/components/adjust-model.js"></script>
         <script src="scripts/components/adjust-player-position.js"></script>
         <script defer src="scripts/components/collision.js"></script>
+        
 
         <title> The Slide VR </title>
-        <audio autoplay loop>
-            <source src="audio/ingame.mp3" type="audio/mpeg">
-        </audio>
+        
     </head>
     <body>
+        <audio id="audio" autoplay loop>
+            <source  src="audio/ingame.mp3" type="audio/mpeg">
+        </audio>
+        <script>
+            const audio = document.getElementById("audio");
+            audio.volume = 0.5;
+        </script>
 
         <a-scene inspector stats physics="gravity: 0;">
 
