@@ -7,9 +7,9 @@ let stateCheck = setInterval(() => {
 
 function checkIfReloadedAfterGameEnd() {
     const result = localStorage.getItem('score');
-    if (result !== 'null') {
-        document.getElementById('gameOver').innerHTML = '<h2>GAME OVER!</h2>' +
-            '<h4>Your result: ' + result + '</h4>';
+    if (result != 'null') {
+        document.getElementById('gameOver').innerHTML = '<h1>GAME OVER!</h1>' +
+            '<h2>Your result: ' + result + '</h2>';
         localStorage.setItem('score', null);
     }
 }
