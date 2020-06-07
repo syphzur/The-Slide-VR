@@ -50,6 +50,7 @@
                         src="img/TexturesCom_Ice_Cracked_1K_albedo.png">
                 <img    id="bonusTexture" 
                         src="img/bonus.png"> 
+                <img id=heart src="img/heart.png">
 
                 <!-- music d-__-b -->
                 <audio id="collision" src="audio/collision.mp3" preload="auto"></audio>
@@ -250,11 +251,16 @@
                 <a-entity   body="type: dynamic; shape: none; sphereRadius: NaN" 
                             id="score" 
                             text="value: Your score: 0; side: front; align: center; color: #941414"
-                            position="4.4 8.05 0.1"
+                            position="4.4 9.05 0.1"
                             rotation="0 90 0"
                             scale="10 10 10"
-                            align: center>
+                            align: center
+                            >
                 </a-entity>
+                <a-image id="heart1" src="#heart" position="4.4 9.55 1" rotation="0 90 0" width=0.45 height=0.5></a-image>
+                <a-image id="heart2" src="#heart" position="4.4 9.55 0" rotation="0 90 0" width=0.45 height=0.5></a-image>
+                <a-image id="heart3" src="#heart" position="4.4 9.55 -1" rotation="0 90 0" width=0.45 height=0.5></a-image>
+    </a-entity>
         </a-scene>
     </body>
 </html>

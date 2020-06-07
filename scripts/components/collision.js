@@ -1,21 +1,25 @@
 //Sets collision event on player
+
 AFRAME.registerComponent("collision-detector", {
     init: function () {
         const player = this.el;
+        startScoreIncrement();
         player.addEventListener('collide', handleCollision);
     }
 })
 
-function handleCollision(collision){
+function handleCollision(collision) {
     const elem = collision.detail.body;
     console.log("colided with: ", elem);
-    
-    if(elem.el.className === 'bonus')
-    {
+
+    if (elem.el.className === 'bonus') {
         removeElementAndUpdateScore(elem.el);
     }
-    if(elem.el.className === "obstacle"){
-        endGame();
+    if (elem.el.className === "obstacle") {
+       removeLive()
+        if (lives < 1) {
+            endGame();
+        }
     }
     const playerCollider = document.querySelector("#player-collision").body;
     const player = document.querySelector("#player").body;
@@ -31,21 +35,50 @@ function removeElementAndUpdateScore(element) {
     // hide or move the element
     // otherwise during deletion game crashes
     element.setAttribute("visible", "false");
-    updateScore();
+    updateScore(scoreUpdateValue.SCORE_BONUS_UPDATE);
 }
 
+function endGame() {
+    localStorage.setItem('score', score);
+    window.location.replace('/index.html');
+}
 
 //Score handling
-var score = 0;
-const textValueBeforeScore="value: Your score: ";
-const textValueAfterScore="; side: front; align: center; color: #941414";
-function updateScore(){
-    console.log('Score updated.');
-    var scoreElement = document.querySelector("#score");
-    score++;
-    scoreElement.setAttribute("text",textValueBeforeScore + score + textValueAfterScore);
+let score = 0;
+let lives = 3;
+const TEXT_VALUE_BEFORE_SCORE = "value: Your score: ";
+const TEXT_VALUE_AFTER_SCORE = "; side: front; align: center; color: #941414";
+const SCORE_DISTANCE_UPDATE_INTERVAL = 1500;
+
+const scoreUpdateValue = {
+    SCORE_BONUS_UPDATE: 250,
+    SCORE_DISTANCE_UPDATE: 1
+};
+
+function removeLive() {
+    if (lives === 3) {
+        document.getElementById('heart3').remove();
+    }
+    else if (lives === 2) {
+        document.getElementById('heart2').remove();
+    }
+    else if (lives === 1) {
+        document.getElementById('heart1').remove();
+    }
+    lives--;
 }
 
-function endGame(){
-    window.location.pathname = '/index.html'
+
+function startScoreIncrement() {
+    setInterval(() => updateScore(scoreUpdateValue.SCORE_DISTANCE_UPDATE), SCORE_DISTANCE_UPDATE_INTERVAL);
+}
+
+function updateScoreAfterBonusCollision() {
+    updateScore(scoreUpdateValue.SCORE_BONUS_UPDATE);
+}
+
+function updateScore(scoreUpdateValue) {
+    var scoreElement = document.querySelector("#score");
+    score += scoreUpdateValue;
+    scoreElement.setAttribute("text", TEXT_VALUE_BEFORE_SCORE + score + TEXT_VALUE_AFTER_SCORE);
 }

@@ -18,6 +18,7 @@
   <link href="slide.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <script src="scripts/main_jquery.js"></script>
+  <script src="scripts/score.js"></script>
 </head>
 
 <body class="text-center">
@@ -36,16 +37,21 @@
       </div>
     </header>
 
-    <div>
-      <main role="main" class="inner cover">
-        <div id="main">
-        </div>
+
+    <main role="main" class="inner cover">
+      <div id="gameOver" class="gameOver">
+      </div>
+      <div id="main">
+      </div>
+      <br/>
+      <br/>
+      <div style="margin-top:50px;">
         <p class="lead">
           <a href="game.html" class="btn btn-lg btn-secondary">Play!</a>
         </p>
         <a id="controls-link" class="btn btn-lg btn-secondary">Controls</a>
-      </main>
-    </div>
+      </div>
+    </main>
     <footer class="mastfoot mt-auto">
       <div class="inner">
         <a href="https://github.com/syphzur/The-Slide-VR">Github</a>
