@@ -96,7 +96,7 @@
                 <a-entity    
                     id="track2Obstacle1"
                     gltf-model="#obstacleModel"
-                    position="-50 0 0"
+                    position="100 0 0"
                     class="obstacle"
                     gltf-model="#obstacleModel"
                     static-body="shape:hull"
@@ -107,7 +107,7 @@
                 <!-- obstacle2, position relative to slidePart2-->
                 <a-entity    
                     id="track2Obstacle2"
-                    position="-50 0 0"
+                    position="100 0 0"
                     class="obstacle"
                     gltf-model="#obstacleModel"
                     static-body="shape:hull"
@@ -130,7 +130,7 @@
                 <!-- obstacle1, position relative to slidePart1, starting position behind player-->
                 <a-entity    
                     id="track1Obstacle1"
-                    position="-50 0 0"
+                    position="100 0 0"
                     class="obstacle"
                     gltf-model="#obstacleModel"
                     static-body="shape:hull"
@@ -140,7 +140,7 @@
                 <!-- obstacle2, position relative to slidePart1, starting position behind player-->
                 <a-entity    
                     id="track1Obstacle2"
-                    position="-50 0 0"
+                    position="100 0 0"
                     class="obstacle"
                     gltf-model="#obstacleModel"
                     static-body="shape:hull"
@@ -154,7 +154,7 @@
                     class="bonus"
                     id="track1Bonus"
                     material="color: #edff0d; alphaTest: 0.2; metalness: 0.2; roughness: 1; src: #bonusTexture" 
-                    position="-50 0 0"
+                    position="100 0 0"
                     scale="0.5 0.5 0.5"
                     static-body
                     radius="1"
@@ -163,42 +163,40 @@
 
             </a-box>
 
-            <a-box clone-along-curve="curve: #track1; spacing: 2.5" 
-            position="0 0.5 4"
-            height="2" 
-            width="0.1"
-            depth="2"
-            id="track1BarrierLeft"
-            color="tomato">
+            <a-box  clone-along-curve="curve: #track1; spacing: 2.5" 
+                    position="0 0.5 4"
+                    height="2" 
+                    width="0.1"
+                    depth="2"
+                    id="track1BarrierLeft"
+                    color="tomato">
             </a-box>
 
-            <a-box clone-along-curve="curve: #track1; spacing: 2.5" 
-            position="0 0.5 -4"
-            height="2" 
-            width="0.1"
-            depth="2"
-            id="track1BarrierRight"
-            color="tomato">
+            <a-box  clone-along-curve="curve: #track1; spacing: 2.5" 
+                    position="0 0.5 -4"
+                    height="2" 
+                    width="0.1"
+                    depth="2"
+                    id="track1BarrierRight"
+                    color="tomato">
             </a-box>
 
-            <a-box clone-along-curve="curve: #track2; spacing: 2.5" 
-            position="-40 0.5 4"
-            height="2" 
-            width="0.1"
-            depth="2"
-            id="track2BarrierLeft"
-            color="tomato"
-            >
+            <a-box  clone-along-curve="curve: #track2; spacing: 2.5" 
+                    position="-40 0.5 4"
+                    height="2" 
+                    width="0.1"
+                    depth="2"
+                    id="track2BarrierLeft"
+                    color="tomato">
             </a-box>
 
-            <a-box clone-along-curve="curve: #track2; spacing: 2.5" 
-            position="-40 0.5 -4"
-            height="2" 
-            width="0.1"
-            depth="2"
-            id="track2BarrierRight"
-            color="tomato"
-            >
+            <a-box  clone-along-curve="curve: #track2; spacing: 2.5" 
+                    position="-40 0.5 -4"
+                    height="2" 
+                    width="0.1"
+                    depth="2"
+                    id="track2BarrierRight"
+                    color="tomato">
             </a-box>
             <!--bobbing player animation-->
             <!-- animation="property: object3D.position.y; dir: alternate; from: 5.55; to: 5.7 ; dur: 2000; easing: easeInOutQuad; loop: true"  -->
@@ -210,8 +208,8 @@
                 opacity="0"
                 body
                 position="14 5.55 0"
-                collision-detector
-            ></a-sphere>
+                collision-detector>
+            </a-sphere>
             <a-entity   id="player"
                         dynamic-body="shape: none"
                         adjust-model="1"
@@ -254,13 +252,12 @@
                             position="4.4 9.05 0.1"
                             rotation="0 90 0"
                             scale="10 10 10"
-                            align: center
-                            >
+                            align: center>
                 </a-entity>
                 <a-image id="heart1" src="#heart" position="4.4 9.55 1" rotation="0 90 0" width=0.45 height=0.5></a-image>
                 <a-image id="heart2" src="#heart" position="4.4 9.55 0" rotation="0 90 0" width=0.45 height=0.5></a-image>
                 <a-image id="heart3" src="#heart" position="4.4 9.55 -1" rotation="0 90 0" width=0.45 height=0.5></a-image>
-    </a-entity>
+            </a-entity>
         </a-scene>
     </body>
 </html>
