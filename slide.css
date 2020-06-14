@@ -24,6 +24,34 @@ a:hover {
   border: 0.05rem solid #ff0000;
 }
 
+.btn-outline-secondary{
+  color: #c62727;
+}
+
+.btn-outline-secondary:hover{
+  color: #c62727;
+  background-color: transparent;
+  border: 0.05rem solid #ff0000;
+}
+
+.mute-button{
+  margin-top: 100px; 
+  float: left;
+  width: 25%;
+}
+
+.volume-level{
+  width: 70%;
+  float: right;
+}
+
+.volume-label{
+  margin-top: 90px; 
+  float: right; 
+  width: 70%; 
+  color: #c62727;
+}
+
 html,
 body {
   height: 100%;
