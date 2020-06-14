@@ -45,7 +45,9 @@ function removeElementAndUpdateScore(element) {
 
 function endGame() {
     localStorage.setItem('score', score);
-    window.location = location.protocol + "//" + location.hostname + ':' + location.port + "/index.html";
+    let href = location.href.substr(0, location.href.lastIndexOf('/'));
+    href += "/index.html"
+    location.href = href;
 }
 
 //Score handling
