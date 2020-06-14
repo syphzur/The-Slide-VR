@@ -8,6 +8,7 @@ AFRAME.registerComponent("collision-detector", {
     }
 })
 
+let lastObstacleId = '';
 function handleCollision(collision) {
     const elem = collision.detail.body;
     console.log("colided with: ", elem);
@@ -16,9 +17,13 @@ function handleCollision(collision) {
         removeElementAndUpdateScore(elem.el);
     }
     if (elem.el.className === "obstacle") {
-       removeLive()
-        if (lives < 1) {
-            endGame();
+        if (lastObstacleId !== elem.el.id) {
+            removeLive()
+            if (lives < 1) {
+                endGame();
+            }
+            lastObstacleId = elem.el.id;
+            setTimeout(() => lastObstacleId = '', 500);
         }
     }
     const playerCollider = document.querySelector("#player-collision").body;
@@ -40,7 +45,7 @@ function removeElementAndUpdateScore(element) {
 
 function endGame() {
     localStorage.setItem('score', score);
-    window.location.replace('/index.html');
+    window.location = location.protocol + "//" + location.hostname + ':' + location.port + "/index.html";
 }
 
 //Score handling
