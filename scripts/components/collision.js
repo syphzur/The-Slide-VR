@@ -92,7 +92,7 @@ function updateScore(scoreUpdateValue) {
 
 function playBonusSound() {
     const muted = sessionStorage.getItem('muted');
-    if (muted != null && muted == true) {
+    if (muted != null && muted == 'true') {
         return;
     }
     const sound = document.getElementById('bonusSound');
@@ -101,7 +101,7 @@ function playBonusSound() {
 
 function playCollisionSound() {
     const muted = sessionStorage.getItem('muted');
-    if (muted != null && muted == true) {
+    if (muted !== null && muted == 'true') {
         return;
     }
     const sound = document.getElementById('collisionSound');

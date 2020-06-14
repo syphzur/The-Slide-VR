@@ -14,7 +14,6 @@ AFRAME.registerComponent("game-sound", {
         }
         if (mutedToSet !== null) {
             audioGame.muted = mutedToSet;
-            console.log('in');
         }
         else {
             audioGame.muted = false;

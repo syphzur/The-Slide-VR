@@ -16,7 +16,7 @@ function checkIfReloadedAfterGameEnd() {
 
 function playGameOverSound() {
     const muted = sessionStorage.getItem('muted');
-    if (muted != null && muted == true) {
+    if (muted != null && muted == 'true') {
         return;
     }
     const sound = document.getElementById('gameoverSound');
