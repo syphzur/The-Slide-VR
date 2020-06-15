@@ -91,19 +91,21 @@ function updateScore(scoreUpdateValue) {
 }
 
 function playBonusSound() {
-    const muted = sessionStorage.getItem('muted');
-    if (muted != null && muted == 'true') {
-        return;
-    }
     const sound = document.getElementById('bonusSound');
+    const volume = sessionStorage.getItem('volume');
+    if (volume != null) {
+        sound.volume = volume;
+    }
     sound.play();
 }
 
 function playCollisionSound() {
-    const muted = sessionStorage.getItem('muted');
-    if (muted !== null && muted == 'true') {
-        return;
-    }
     const sound = document.getElementById('collisionSound');
+    const volume = sessionStorage.getItem('volume');
+    if (volume != null) {
+        sound.volume = volume;
+    }
+    sound.pause(); 
+    sound.currentTime = 0;
     sound.play();
 }

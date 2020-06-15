@@ -15,11 +15,10 @@ function checkIfReloadedAfterGameEnd() {
 }
 
 function playGameOverSound() {
-    const muted = sessionStorage.getItem('muted');
-    if (muted != null && muted == 'true') {
-        return;
-    }
     const sound = document.getElementById('gameoverSound');
+    const volume = sessionStorage.getItem('volume');
+    if (volume != null) {
+        sound.volume = volume;
+    }
     sound.play();
-    console.log('played')
 }
