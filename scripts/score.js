@@ -16,7 +16,7 @@ function checkIfReloadedAfterGameEnd() {
 
 function playGameOverSound() {
     const sound = document.getElementById('gameoverSound');
-    const volume = sessionStorage.getItem('volume');
+    const volume = localStorage.getItem('volume');
     if (volume != null) {
         sound.volume = volume;
     }

@@ -1,6 +1,6 @@
 AFRAME.registerComponent("game-sound", {
     init: function () {
-        const volumeToSet = sessionStorage.getItem('volume');
+        const volumeToSet = localStorage.getItem('volume');
         let audioGame = new Audio('audio/ingame.mp3');
         audioGame.load();
         audioGame.type = 'audio/mpeg';

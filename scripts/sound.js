@@ -2,12 +2,12 @@ function changeVolume() {
     const audio = document.getElementById("audio");
     const newVolumeValue = document.getElementById("volumeRange").value;
     audio.volume = newVolumeValue;
-    sessionStorage.setItem('volume', newVolumeValue);
+    localStorage.setItem('volume', newVolumeValue);
 }
 
 window.onload = () => {
     const audio = document.getElementById("audio");
-    const volumeToSet = sessionStorage.getItem('volume');
+    const volumeToSet = localStorage.getItem('volume');
     if (volumeToSet != null) {
         audio.volume = volumeToSet;
     }

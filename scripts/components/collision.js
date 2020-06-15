@@ -92,7 +92,7 @@ function updateScore(scoreUpdateValue) {
 
 function playBonusSound() {
     const sound = document.getElementById('bonusSound');
-    const volume = sessionStorage.getItem('volume');
+    const volume = localStorage.getItem('volume');
     if (volume != null) {
         sound.volume = volume;
     }
@@ -101,7 +101,7 @@ function playBonusSound() {
 
 function playCollisionSound() {
     const sound = document.getElementById('collisionSound');
-    const volume = sessionStorage.getItem('volume');
+    const volume = localStorage.getItem('volume');
     if (volume != null) {
         sound.volume = volume;
     }
