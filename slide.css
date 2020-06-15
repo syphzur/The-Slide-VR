@@ -30,7 +30,7 @@ a:hover {
 }
 
 .volume-label{
-  margin-top: 90px; 
+  margin-top: 20px; 
   max-width: 100%;
   text-align: center;
   color: #c62727;
@@ -89,4 +89,8 @@ a.selected {
 .gameOver {
   color: #d7391d;
   margin-bottom: 100px;
+}
+
+.marginTop {
+  margin-top: 200px;
 }
