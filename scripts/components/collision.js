@@ -14,9 +14,11 @@ function handleCollision(collision) {
     console.log("colided with: ", elem);
 
     if (elem.el.className === 'bonus') {
+        playBonusSound();
         removeElementAndUpdateScore(elem.el);
     }
     if (elem.el.className === "obstacle") {
+        playCollisionSound();
         if (lastObstacleId !== elem.el.id) {
             removeLive()
             if (lives < 1) {
@@ -88,4 +90,24 @@ function updateScore(scoreUpdateValue) {
     var scoreElement = document.querySelector("#score");
     score += scoreUpdateValue;
     scoreElement.setAttribute("text", TEXT_VALUE_BEFORE_SCORE + score + TEXT_VALUE_AFTER_SCORE);
+}
+
+function playBonusSound() {
+    const sound = document.getElementById('bonusSound');
+    const volume = localStorage.getItem('volume');
+    if (volume != null) {
+        sound.volume = volume;
+    }
+    sound.play();
+}
+
+function playCollisionSound() {
+    const sound = document.getElementById('collisionSound');
+    const volume = localStorage.getItem('volume');
+    if (volume != null) {
+        sound.volume = volume;
+    }
+    sound.pause(); 
+    sound.currentTime = 0;
+    sound.play();
 }

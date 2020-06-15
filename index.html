@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"
     crossorigin="anonymous"></script>
+  <script src="scripts/sound.js"></script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,15 +24,9 @@
 </head>
 
 <body class="text-center">
-  <audio id="audio" autoplay loop>
-    <source src="audio/mainmenu.mp3" type="audio/mpeg">
-  </audio> 
-  <script>
-    const audio = document.getElementById("audio");
-    audio.volume = 0.5;
-</script>
+  <audio id="gameoverSound" src="audio/gameover.mp3" preload="auto"></audio>
 
-  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+  <div class="cover-container d-flex p-3 mx-auto flex-column ov">
     <header class="masthead mb-auto">
       <div class="inner">
         <h3 class="masthead-brand">Slide VR</h3>
@@ -38,19 +34,26 @@
     </header>
 
 
-    <main role="main" class="inner cover">
+    <main role="main" class="inner cover fx">
       <div id="gameOver" class="gameOver">
       </div>
       <div id="main">
       </div>
-      <br/>
-      <br/>
-      <div style="margin-top:50px;">
+      <br />
+      <br />
+      <div class="buttons">
         <p class="lead">
-          <a href="game.html" class="btn btn-lg btn-secondary">Play!</a>
+          <a href="game.html" class="btn btn-lg btn-secondary btnMargin">Play!</a>
         </p>
-        <a id="controls-link" class="btn btn-lg btn-secondary">Controls</a>
+        <a id="controls-link" class="btn btn-lg btn-secondary btnMargin">Controls</a>
       </div>
+      <form>
+        <div class="form-group">
+          <label for="formControlRange" class="volume-label">Volume</label>
+          <input type="range" id="volumeRange" oninput="changeVolume()" value="0.5"
+            class="form-control-range volume-level" min="0" max="1" step="0.1">
+        </div>
+      </form>
     </main>
     <footer class="mastfoot mt-auto">
       <div class="inner">
