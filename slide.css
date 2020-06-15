@@ -139,10 +139,20 @@ img {
 
 .ov {
   min-height: 100%;
+  min-width: 100%;
   overflow: auto;
 }
 
 .fx {
   display: flex;
   flex-direction: column;
+}
+
+.slide {
+  font-size: 35px;
+}
+
+.form-group {
+  margin: 0 auto 50px;
+  max-width: 400px;
 }
