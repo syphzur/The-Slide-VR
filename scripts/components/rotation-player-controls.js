@@ -5,6 +5,12 @@ AFRAME.registerComponent("rotation-player-controls", {
     const player = document.querySelector("#player");
     const playerCollider = document.querySelector("#player-collision");
     const mesh = player.getObject3D("mesh");
+    // Don't allow player to make full turn
+    if (rot.y > 0.4 * Math.PI) {
+      rot.y = 0.4 * Math.PI;
+    }else if (rot.y < -0.4 * Math.PI) {
+      rot.y = -0.4 * Math.PI;
+    }
     mesh?.rotation.set(0, rot.y + Math.PI / 2, rot.z); // change y value to adjust model rotation
     const pos = player.body?.position;
 
