@@ -79,7 +79,7 @@ body {
 }
 
 #main {
-  height: 10em;
+  height: inherit;
 }
 
 a.selected {
@@ -91,6 +91,58 @@ a.selected {
   margin-bottom: 100px;
 }
 
-.marginTop {
-  margin-top: 200px;
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  width: 200px;
+  height: 150px;
+  margin: 50px 50px 50px;
+}
+
+.h2Title {
+  color: #990000;
+}
+
+.controlDivLeft {
+  text-align: center;
+  float: left;
+  padding: 15px;
+}
+
+.controlDivRight {
+  text-align: center;
+  float:  right;
+  padding: 15px;
+}
+
+.cover-heading {
+  margin-bottom: 50px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -100px;
+}
+
+.controls {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ov {
+  min-height: 100%;
+  overflow: auto;
+}
+
+.fx {
+  display: flex;
+  flex-direction: column;
 }
