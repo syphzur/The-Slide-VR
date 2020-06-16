@@ -11,7 +11,6 @@ AFRAME.registerComponent("collision-detector", {
 let lastObstacleId = '';
 function handleCollision(collision) {
     const elem = collision.detail.body;
-    console.log("colided with: ", elem);
 
     if (elem.el.className === 'bonus') {
         playBonusSound();
