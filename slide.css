@@ -24,6 +24,7 @@ a:hover {
   border: 0.05rem solid #ff0000;
 }
 
+/* Volume level control styling */
 .volume-level{
   max-width: 100%;
   text-align: center;
