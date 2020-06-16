@@ -14,7 +14,7 @@
     <script src="https://unpkg.com/aframe-curve-component/dist/aframe-curve-component.min.js"></script>
 
     <!-- created scripts -->
-    <script src="scripts/components/clear-forces.js"></script>
+    <script src="scripts/clear-forces.js"></script>
     <script src="scripts/components/arrows-controls.js"></script>
     <script src="scripts/components/rotation-player-controls.js"></script>
     <script src="scripts/components/slide-part-animation.js"></script>
@@ -36,7 +36,6 @@
             </a-asset-item>
             <a-asset-item id="obstacleModel" src="./models/low_poly_rock/low_poly_rock.gltf">
             </a-asset-item>
-            <img id="slideTexture" src="img/TexturesCom_Ice_Cracked_1K_albedo.png">
             <img id="bonusTexture" src="img/bonus.png">
             <img id=heart src="img/heart.png">
 
@@ -134,7 +133,7 @@
         </a-sphere>
         <!-- player -->
         <a-entity id="player" dynamic-body="shape: none" adjust-model="1" gltf-model="#playerModel" position="14 5.55 0"
-            arrows-controls adjust-player-position>
+            adjust-player-position>
 
 
             <!-- light under the player -->
