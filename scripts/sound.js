@@ -42,7 +42,3 @@ function changeVolume() {
     
     localStorage.setItem('volume', newVolumeValue);
 }
-
-window.onload = () => {
-    
-}
