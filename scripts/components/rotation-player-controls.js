@@ -8,7 +8,7 @@ AFRAME.registerComponent("rotation-player-controls", {
     // Don't allow player to make full turn
     if (rot.y > 0.4 * Math.PI) {
       rot.y = 0.4 * Math.PI;
-    }else if (rot.y < -0.4 * Math.PI) {
+    } else if (rot.y < -0.4 * Math.PI) {
       rot.y = -0.4 * Math.PI;
     }
     mesh?.rotation.set(0, rot.y + Math.PI / 2, rot.z); // change y value to adjust model rotation
@@ -17,15 +17,20 @@ AFRAME.registerComponent("rotation-player-controls", {
     const slidePart1 = document.querySelector("#slidePart1");
     const slidePart2 = document.querySelector("#slidePart2");
 
+    //get current track 
     const track =
       slidePart1.object3D.position.x > slidePart2.object3D.position.x
         ? document.querySelector("#track1")
         : document.querySelector("#track2");
+
+    //get current slide part
     const slide =
       slidePart1.object3D.position.x > slidePart2.object3D.position.x
         ? slidePart1
         : slidePart2;
-    const offset = slide.object3D.position.x;
+
+    //get points from current track     
+    const offset = slide.object3D.position.x; // offset from beginning position
     const pointsArray = Array.from(track.querySelectorAll("a-curve-point")).map(
       function (point) {
         const pos = point.object3D.position;
@@ -34,8 +39,13 @@ AFRAME.registerComponent("rotation-player-controls", {
       }
     );
 
+    //create curve based on points from track curve
     const curve = new THREE.CatmullRomCurve3(pointsArray);
+
+    //get less spaced points array
     const curvePointsArray = curve.getSpacedPoints(10000); // ca. 0.002 between points
+
+    //finding nearest point
     let nearestPoint;
     let distance = Number.MAX_SAFE_INTEGER;
     curvePointsArray.forEach((element) => {
@@ -45,6 +55,8 @@ AFRAME.registerComponent("rotation-player-controls", {
         nearestPoint = element;
       }
     });
+
+    //compute barrier position based on nearest point
     const leftBarrierPos = {
       x: nearestPoint.x,
       y: nearestPoint.y,
@@ -58,9 +70,10 @@ AFRAME.registerComponent("rotation-player-controls", {
     const dFromLeftBarrier = calculateZDistance(leftBarrierPos, pos);
     const dFromRightBarrier = calculateZDistance(rightBarrierPos, pos);
 
+    //if player is far enough let him move
     if (dFromLeftBarrier > 0.2 && dFromRightBarrier > 0.2) {
       player.body?.position.set(pos.x, pos.y, pos.z + 0.1 * rot.y);
-    } else {
+    } else { // move player away from barrier
       let step = 0;
       if (dFromLeftBarrier > 0.2 ) {
         step = -Math.abs(rot.y) * 1.5;

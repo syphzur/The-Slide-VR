@@ -27,6 +27,7 @@
 </head>
 
 <body>
+     <!-- scene -->
     <a-scene physics="gravity: 0;" game-sound>
         <!-- assets -->
         <a-assets>
@@ -51,7 +52,7 @@
             position="0 -10 0">
         </a-entity>
 
-        <!--curve with length 40-->
+        <!--first track part, curve with length 40-->
         <a-curve id="track1">
             <a-curve-point position="20 5 0"></a-curve-point>
             <a-curve-point position="10 5 0"></a-curve-point>
@@ -60,6 +61,7 @@
             <a-curve-point position="-20 5 0"></a-curve-point>
         </a-curve>
 
+        <!--second track part, curve with length 40-->
         <a-curve id="track2">
             <a-curve-point position="20 5 0"></a-curve-point>
             <a-curve-point position="10 5 0"></a-curve-point>
@@ -68,6 +70,7 @@
             <a-curve-point position="-20 5 0"></a-curve-point>
         </a-curve>
 
+        <!-- box that is cloned along curve, second track part floor -->
         <a-box clone-along-curve="curve: #track2; spacing: 2.5;" position="-40 0 0" repeat="10 1" height="0.1" width="8"
             depth="2" id="slidePart2" color="tomato" slide-part2-animation>
 
@@ -83,6 +86,7 @@
             </a-entity>
         </a-box>
 
+        <!-- box that is cloned along curve, first track part floor -->
         <a-box clone-along-curve="curve: #track1; spacing: 2.5" position="0 0 0" repeat="10 1" height="0.1" width="8"
             depth="2" id="slidePart1" color="tomato" slide-part1-animation>
 
@@ -103,27 +107,32 @@
 
         </a-box>
 
+         <!-- first track left barrier -->
         <a-box clone-along-curve="curve: #track1; spacing: 2.5" position="0 0.5 4" height="2" width="0.1" depth="2"
             id="track1BarrierLeft" color="tomato">
         </a-box>
 
+        <!-- first track right barrier -->
         <a-box clone-along-curve="curve: #track1; spacing: 2.5" position="0 0.5 -4" height="2" width="0.1" depth="2"
             id="track1BarrierRight" color="tomato">
         </a-box>
 
+        <!-- second track left barrier -->
         <a-box clone-along-curve="curve: #track2; spacing: 2.5" position="-40 0.5 4" height="2" width="0.1" depth="2"
             id="track2BarrierLeft" color="tomato">
         </a-box>
 
+        <!-- second track right barrier -->
         <a-box clone-along-curve="curve: #track2; spacing: 2.5" position="-40 0.5 -4" height="2" width="0.1" depth="2"
             id="track2BarrierRight" color="tomato">
         </a-box>
         <!--bobbing player animation-->
         <!-- animation="property: object3D.position.y; dir: alternate; from: 5.55; to: 5.7 ; dur: 2000; easing: easeInOutQuad; loop: true"  -->
 
-        <!-- player -->
+        <!-- player collider -->
         <a-sphere id="player-collision" radius="0.65" opacity="0" body position="14 5.55 0" collision-detector>
         </a-sphere>
+        <!-- player -->
         <a-entity id="player" dynamic-body="shape: none" adjust-model="1" gltf-model="#playerModel" position="14 5.55 0"
             arrows-controls adjust-player-position>
 
@@ -152,6 +161,7 @@
             text="value: Your score: 0; side: front; align: center; color: #941414" position="4.4 9.05 0.1"
             rotation="0 90 0" scale="10 10 10" align: center>
         </a-entity>
+        <!-- hearts -->
         <a-image id="heart1" src="#heart" position="4.4 9.55 1" rotation="0 90 0" width=0.45 height=0.5></a-image>
         <a-image id="heart2" src="#heart" position="4.4 9.55 0" rotation="0 90 0" width=0.45 height=0.5></a-image>
         <a-image id="heart3" src="#heart" position="4.4 9.55 -1" rotation="0 90 0" width=0.45 height=0.5></a-image>

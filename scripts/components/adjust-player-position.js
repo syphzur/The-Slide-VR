@@ -1,3 +1,4 @@
+//component for adjusting player position (height) because gravity is turned off
 AFRAME.registerComponent("adjust-player-position", {
   init: function () {
     const player = this.el;
@@ -13,11 +14,15 @@ AFRAME.registerComponent("adjust-player-position", {
     const slidePart2 = document.querySelector("#slidePart1");
     const playerPos = this.el.object3D.position;
     const nextPosOffset = 1.5;
+
+    //predict next player position
     const nextPlayerPos = new THREE.Vector3(
       playerPos.x - nextPosOffset,
       playerPos.y,
       playerPos.z
     );
+
+    //get points from two parts of the track
     const pointsArray = Array.from(track1.querySelectorAll("a-curve-point"))
       .map(function (point) {
         const pos = point.object3D.position;
@@ -38,9 +43,14 @@ AFRAME.registerComponent("adjust-player-position", {
     if (pointsArray.length != 10) {
       throw new Error("There should be 10 points.");
     }
+
+    //create curve based on points from the track
     const curve = new THREE.CatmullRomCurve3(pointsArray);
 
+    //get points with less space between them
     const curvePointsArray = curve.getSpacedPoints(10000); // ca. 0.002 between points
+
+    //find nearest point
     let nearestPoint;
     let distance = Number.MAX_SAFE_INTEGER;
     curvePointsArray.forEach((element) => {
