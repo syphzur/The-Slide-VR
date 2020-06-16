@@ -1,3 +1,4 @@
+//Component which is responsible for starting music after loading game scene if not muted.
 AFRAME.registerComponent("game-sound", {
     init: function () {
         const volumeToSet = localStorage.getItem('volume');
